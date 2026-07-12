@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Image to WebP Converter — Free Bulk JPG/PNG to WebP Tool (No Upload to Server)</title>
-<meta name="description" content="JPG, PNG images bulk එකේ WebP format එකට convert කරලා blog/website loading speed වැඩි කරගන්න. Quality control, ZIP download — images server එකට upload වෙන්නෙ නෑ, browser එකේම convert වේ.">
+<meta name="description" content="Convert JPG and PNG images to WebP in bulk to speed up your blog or website. Adjustable quality, ZIP download — images never leave your browser.">
 <link rel="canonical" href="https://vibezztool.com/image-to-webp-converter.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,21 +41,21 @@
   <main class="wrap">
     <section class="tool-hero">
       <span class="stamp">IMAGE TOOL · 08</span>
-      <h1>Image to WebP Converter — Blog/Website Images Size අඩු කරගන්න</h1>
-      <p class="lede">JPG, PNG images ගොඩක් එකපාරටම WebP format එකට convert කරලා, size අඩු කරගන්න. Blog post upload speed, page loading speed වැඩි කරගන්න මේක ගොඩක් උදව් වෙනවා. Images ඔයාගේ device එකෙන් එළියට යන්නෙ නෑ — browser එකේම convert වෙන්නේ.</p>
+      <h1>Image to WebP Converter — Shrink Images for Blogs &amp; Websites</h1>
+      <p class="lede">Convert JPG, PNG, or GIF images to WebP in bulk and shrink file size without losing quality. Smaller images mean faster page loads and quicker uploads. Your images never leave your device — everything converts right in your browser.</p>
     </section>
 
     <div class="panel">
       <div id="dropZone" style="border:2px dashed var(--line); border-radius: 12px; padding: 40px 20px; text-align:center; cursor:pointer; background: var(--paper);">
-        <p style="font-weight:600; margin:0 0 6px;">📁 Images මෙතන Drag &amp; Drop කරන්න, නැත්නම් Click කරන්න</p>
-        <p style="font-size:0.82rem;color:var(--slate); margin:0;">JPG, PNG, GIF — එකපාරටම ගොඩක් images upload කරන්න පුළුවන්</p>
+        <p style="font-weight:600; margin:0 0 6px;">📁 Drag &amp; Drop Images Here, or Click to Browse</p>
+        <p style="font-size:0.82rem;color:var(--slate); margin:0;">JPG, PNG, GIF — upload as many images as you like at once</p>
         <input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
       </div>
 
       <div style="margin-top:18px;">
         <label for="quality">WebP Quality: <span id="qualityVal">80</span>%</label>
         <input type="range" id="quality" min="10" max="100" value="80">
-        <p style="font-size:0.78rem;color:var(--slate);">වැඩිය Quality = ලොකු file size. 75-85% blog images වලට හොඳම balance එක.</p>
+        <p style="font-size:0.78rem;color:var(--slate);">Higher quality = larger file size. 75-85% is the best balance for most blog images.</p>
       </div>
 
       <div class="controls-row">
@@ -67,7 +67,7 @@
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
-      <p class="hint">Blog post එකට image දාන්න කලින් alt text එකට keyword density එකත් Word Counter එකෙන් check කරගන්න.</p>
+      <p class="hint">Adding this image to a blog post? Check your alt text and keyword density with the Word Counter.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
@@ -175,7 +175,7 @@ function handleFiles(fileListRaw) {
   resultsList.innerHTML = '';
   downloadZip.disabled = true;
   if (files.length) {
-    dropZone.querySelector('p').textContent = `📁 ${files.length} image(s) තෝරාගත්තා — Convert click කරන්න`;
+    dropZone.querySelector('p').textContent = `📁 ${files.length} image(s) selected — click Convert`;
   }
 }
 
@@ -231,7 +231,7 @@ convertBtn.addEventListener('click', async () => {
   convertBtn.disabled = false;
   convertBtn.textContent = '⚡ Convert to WebP';
   downloadZip.disabled = converted.length === 0;
-  showToast('Convert වුනා ✓');
+  showToast('Converted ✓');
 });
 
 downloadZip.addEventListener('click', async () => {

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Word Counter — Free Blog Word Count & Reading Time Calculator</title>
-<meta name="description" content="Blog post, essay, assignment වචන ගණන, paragraph ගණන, reading time ක්ෂණිකව check කරගන්න. Keyword density ටිකකුත් බලාගන්න පුළුවන් — 100% free, register නෑ.">
+<meta name="description" content="Instantly check word count, paragraph count, and reading time for a blog post, essay, or assignment. Also spot repeated keywords — 100% free, no sign-up.">
 <link rel="canonical" href="https://vibezztool.com/word-counter.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,12 +41,12 @@
   <main class="wrap">
     <section class="tool-hero">
       <span class="stamp">TEXT TOOL · 03</span>
-      <h1>Word Counter — Blog Post වචන ගණන &amp; කියවීමේ වේලාව</h1>
-      <p class="lede">Blog post එකක්, essay එකක්, assignment එකක් ලියද්දී වචන ගණන, paragraph ගණන, reader කෙනෙක්ට කියවන්න ගතවෙන වේලාව ක්ෂණිකව බලාගන්න.</p>
+      <h1>Word Counter — Word Count &amp; Reading Time for Blog Posts</h1>
+      <p class="lede">Track word count, paragraph count, and estimated reading time instantly while writing a blog post, essay, or assignment.</p>
     </section>
 
     <div class="panel">
-      <textarea id="wcInput" placeholder="ඔයාගේ blog post එක හෝ draft එක මෙතන paste කරන්න..." style="min-height:220px;"></textarea>
+      <textarea id="wcInput" placeholder="Paste your blog post or draft here..." style="min-height:220px;"></textarea>
       <div class="readout-grid">
         <div class="readout"><span class="num" id="wcWords">0</span><span class="lbl">Words</span></div>
         <div class="readout"><span class="num" id="wcChars">0</span><span class="lbl">Characters</span></div>
@@ -56,13 +56,13 @@
     </div>
 
     <div class="panel">
-      <h2>වැඩිපුරම පාවිච්චි කරපු වචන (Top 5)</h2>
+      <h2>Most Used Words (Top 5)</h2>
       <div id="wcTop"></div>
-      <p style="font-size:0.82rem;color:var(--slate);margin-top:10px;">SEO tip: එකම keyword එක ටිකක් වැඩිය repeat වුනොත් Google එකට "keyword stuffing" විදිහට පේන්න පුළුවන්.</p>
+      <p style="font-size:0.82rem;color:var(--slate);margin-top:10px;">SEO tip: repeating the same keyword too often can look like "keyword stuffing" to Google.</p>
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
-      <p class="hint">Social media caption එකකට short text ලියනවනම් Character Counter එක බලන්න.</p>
+      <p class="hint">Writing a short social media caption? Check the Character Counter instead.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
@@ -166,12 +166,12 @@ function render() {
   const top = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,5);
   const topEl = document.getElementById('wcTop');
   topEl.innerHTML = '';
-  if (!top.length) { topEl.innerHTML = '<p style="color:var(--slate);font-size:0.88rem;">Text එකක් type කරන්න.</p>'; return; }
+  if (!top.length) { topEl.innerHTML = '<p style="color:var(--slate);font-size:0.88rem;">Start typing to see word stats.</p>'; return; }
   top.forEach(([word, count]) => {
     const pct = ((count / wordCount) * 100).toFixed(1);
     const row = document.createElement('div');
     row.className = 'result-row';
-    row.innerHTML = `<span class="val">${word}</span><span class="tag">${count} වර — ${pct}%</span>`;
+    row.innerHTML = `<span class="val">${word}</span><span class="tag">${count} uses — ${pct}%</span>`;
     topEl.appendChild(row);
   });
 }

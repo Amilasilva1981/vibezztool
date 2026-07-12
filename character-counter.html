@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Character Counter — Instagram, Twitter, YouTube, Meta Description Limit Checker</title>
-<meta name="description" content="Free online character counter — Instagram caption, Twitter/X, YouTube title, Google meta description limits ක්ෂණිකව check කරගන්න. Register වෙන්න ඕන නෑ.">
+<meta name="description" content="Free online character counter — instantly check Instagram caption, Twitter/X, YouTube title, and Google meta description limits. No sign-up required.">
 <link rel="canonical" href="https://vibezztool.com/character-counter.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,11 +42,11 @@
     <section class="tool-hero">
       <span class="stamp">TEXT TOOL · 02</span>
       <h1>Character Counter — Caption &amp; Meta Description Limit Checker</h1>
-      <p class="lede">Instagram caption, Twitter/X post, YouTube title, Google meta description — ඕනෑම platform එකක character limit එක ඉක්මවනවද කියලා type කරන කොටම බලාගන්න.</p>
+      <p class="lede">Instagram caption, Twitter/X post, YouTube title, Google meta description — See instantly whether your text goes over the limit for any major platform as you type.</p>
     </section>
 
     <div class="panel">
-      <textarea id="ccInput" placeholder="මෙතන type කරන්න හෝ paste කරන්න..."></textarea>
+      <textarea id="ccInput" placeholder="Type or paste your text here..."></textarea>
       <div class="readout-grid">
         <div class="readout"><span class="num" id="ccChars">0</span><span class="lbl">Characters</span></div>
         <div class="readout"><span class="num" id="ccNoSpace">0</span><span class="lbl">No spaces</span></div>
@@ -61,7 +61,7 @@
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
-      <p class="hint">Blog post එකක් ලියනවනම් Word Counter එකෙන් reading time එකත් බලාගන්න.</p>
+      <p class="hint">Writing a blog post? Check word count and reading time with the Word Counter.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
@@ -175,7 +175,7 @@ function render() {
     row.className = 'result-row';
     row.innerHTML = `<div><span class="tag">${name} — limit ${limit}</span>
       <span class="val" style="color:${over ? 'var(--marker)' : 'var(--charcoal)'}">
-        ${over ? (Math.abs(remaining) + ' ඉක්මවලා ✕') : (remaining + ' ඉතුරු ✓')}
+        ${over ? (Math.abs(remaining) + ' over ✕') : (remaining + ' left ✓')}
       </span></div>`;
     platformsEl.appendChild(row);
   });

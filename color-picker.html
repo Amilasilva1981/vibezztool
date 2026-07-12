@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Color Picker — Free HEX, RGB, HSL Color Code Tool</title>
-<meta name="description" content="Design, thumbnail, logo වැඩකට color code එකක් ඕන නම් HEX, RGB, HSL ක්ෂණිකව ලබාගන්න. Screen එකෙන්ම color එකක් pick කරගන්නත් පුළුවන් — 100% free.">
+<meta name="description" content="Get HEX, RGB, and HSL color codes instantly for design, thumbnail, or logo work. Pick a color straight from your screen — 100% free.">
 <link rel="canonical" href="https://vibezztool.com/color-picker.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,16 +41,16 @@
   <main class="wrap">
     <section class="tool-hero">
       <span class="stamp">DESIGN TOOL · 05</span>
-      <h1>Color Picker — HEX / RGB / HSL Codes ලබාගන්න</h1>
-      <p class="lede">Thumbnail, logo, poster එකකට color code එකක් ඕන නම් මෙතනින් තෝරගන්න. HEX, RGB, HSL — ඕනෑම format එකක් copy කරගන්න පුළුවන්.</p>
+      <h1>Color Picker — Get HEX / RGB / HSL Codes Instantly</h1>
+      <p class="lede">Pick a color code for a thumbnail, logo, or poster right here. Copy it in HEX, RGB, or HSL format — whichever you need.</p>
     </section>
 
     <div class="panel">
       <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
         <input type="color" id="cpInput" value="#EF6461" style="width:90px; height:90px; border:none; border-radius:14px; cursor:pointer; padding:0;">
         <div>
-          <button class="btn btn-accent" id="cpEyedrop">🎯 Screen එකෙන් Color එකක් තෝරන්න</button>
-          <p style="font-size:0.78rem;color:var(--slate);margin-top:8px;">(Chrome/Edge browser වල විතරක් ක්‍රියාත්මක වේ)</p>
+          <button class="btn btn-accent" id="cpEyedrop">🎯 Pick a Color From Your Screen</button>
+          <p style="font-size:0.78rem;color:var(--slate);margin-top:8px;">(Only works on Chrome/Edge browsers)</p>
         </div>
       </div>
 
@@ -58,12 +58,12 @@
     </div>
 
     <div class="panel">
-      <h2>මෑතකදී තෝරාගත් Colors</h2>
+      <h2>Recently Picked Colors</h2>
       <div id="cpHistory" class="swatch-strip"></div>
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
-      <p class="hint">Palette එකක් සම්පූර්ණයෙන් ඕන නම් Color Palette Generator එක try කරන්න.</p>
+      <p class="hint">Need a full matching palette? Try the Color Palette Generator.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
@@ -209,7 +209,7 @@ function pushHistory(hex) {
 
 input.addEventListener('input', () => { render(); pushHistory(input.value); });
 document.getElementById('cpEyedrop').addEventListener('click', async () => {
-  if (!window.EyeDropper) { showToast('Browser එක support කරන්නෙ නෑ'); return; }
+  if (!window.EyeDropper) { showToast("Your browser does not support this feature"); return; }
   try {
     const ed = new EyeDropper();
     const result = await ed.open();
