@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VibezzTool — 8 Free Online Tools for Creators & Bloggers (No Sign-Up)</title>
-<meta name="description" content="Free Instagram bio font generator, character counter, word counter, password generator, color picker, palette generator, hashtag helper, and image-to-WebP converter. No sign-up, no ads pop-ups, runs instantly in your browser.">
-<link rel="canonical" href="https://vibezztool.com/">
+<title>Color Picker — Free HEX, RGB, HSL Color Code Tool</title>
+<meta name="description" content="Design, thumbnail, logo වැඩකට color code එකක් ඕන නම් HEX, RGB, HSL ක්ෂණිකව ලබාගන්න. Screen එකෙන්ම color එකක් pick කරගන්නත් පුළුවන් — 100% free.">
+<link rel="canonical" href="https://vibezztool.com/color-picker.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Sinhala:wght@400;600&display=swap" rel="stylesheet">
@@ -20,12 +20,12 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="main-nav" id="mainNav" aria-label="Tools navigation">
-      <a href="index.html" class="current">Home</a>
+      <a href="index.html" class="">Home</a>
       <a href="bio-font-generator.html" class="">Bio Font Generator</a>
       <a href="character-counter.html" class="">Character Counter</a>
       <a href="word-counter.html" class="">Word Counter</a>
       <a href="password-generator.html" class="">Password Generator</a>
-      <a href="color-picker.html" class="">Color Picker</a>
+      <a href="color-picker.html" class="current">Color Picker</a>
       <a href="color-palette-generator.html" class="">Color Palette Generator</a>
       <a href="hashtag-helper.html" class="">Hashtag Helper</a>
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
@@ -39,87 +39,63 @@
     </div>
 
   <main class="wrap">
-    <section class="home-hero">
-      <span class="stamp">no sign-up · no downloads · 100% free</span>
-      <h1>The <span class="accent">8 free tools</span> every creator and blogger opens every single day</h1>
-      <p class="lede">Fonts for Instagram, caption limits, secure passwords, color palettes, hashtag sets, image compression — all in one place, running instantly in your browser. No account, no data upload, no clutter.</p>
-      <a href="bio-font-generator.html" class="btn btn-cta btn-pulse" style="margin-top:18px;">⚡ Start with Bio Font Generator</a>
+    <section class="tool-hero">
+      <span class="stamp">DESIGN TOOL · 05</span>
+      <h1>Color Picker — HEX / RGB / HSL Codes ලබාගන්න</h1>
+      <p class="lede">Thumbnail, logo, poster එකකට color code එකක් ඕන නම් මෙතනින් තෝරගන්න. HEX, RGB, HSL — ඕනෑම format එකක් copy කරගන්න පුළුවන්.</p>
     </section>
 
-    <section>
+    <div class="panel">
+      <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
+        <input type="color" id="cpInput" value="#EF6461" style="width:90px; height:90px; border:none; border-radius:14px; cursor:pointer; padding:0;">
+        <div>
+          <button class="btn btn-accent" id="cpEyedrop">🎯 Screen එකෙන් Color එකක් තෝරන්න</button>
+          <p style="font-size:0.78rem;color:var(--slate);margin-top:8px;">(Chrome/Edge browser වල විතරක් ක්‍රියාත්මක වේ)</p>
+        </div>
+      </div>
+
+      <div id="cpResults" style="margin-top:20px;"></div>
+    </div>
+
+    <div class="panel">
+      <h2>මෑතකදී තෝරාගත් Colors</h2>
+      <div id="cpHistory" class="swatch-strip"></div>
+    </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">Palette එකක් සම්පූර්ණයෙන් ඕන නම් Color Palette Generator එක try කරන්න.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
         <h3>Bio Font Generator</h3>
         <p>Fancy fonts for your Instagram/TikTok bio</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="character-counter.html">
         <span class="badge b-2">C·</span>
         <h3>Character Counter</h3>
         <p>Check caption & meta description limits</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="word-counter.html">
         <span class="badge b-3">W·</span>
         <h3>Word Counter</h3>
         <p>Word count and reading time for blog posts</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="password-generator.html">
         <span class="badge b-4">🔑</span>
         <h3>Password Generator</h3>
         <p>A strong password in one click</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
-      </a>
-      <a class="tool-card" href="color-picker.html">
-        <span class="badge b-5">🎨</span>
-        <h3>Color Picker</h3>
-        <p>Grab HEX / RGB / HSL codes instantly</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="color-palette-generator.html">
         <span class="badge b-6">🌈</span>
         <h3>Color Palette Generator</h3>
         <p>Ready-made palettes for design & thumbnails</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="hashtag-helper.html">
         <span class="badge b-7">#</span>
         <h3>Hashtag Helper</h3>
         <p>Curated hashtag sets by niche</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
-      </a>
-      <a class="tool-card" href="image-to-webp-converter.html">
-        <span class="badge b-2">🖼️</span>
-        <h3>Image to WebP Converter</h3>
-        <p>Shrink image size without losing quality</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       </div>
-    </section>
-
-    <section class="info-section">
-      <h2>Why creators trust VibezzTool</h2>
-      <div class="info-grid">
-        <div class="card">
-          <h3>🔒 Nothing leaves your browser</h3>
-          <p>Every tool — from the password generator to the image converter — runs as client-side JavaScript. Your text, images, and passwords are never uploaded anywhere.</p>
-        </div>
-        <div class="card">
-          <h3>⚡ Zero sign-up, zero friction</h3>
-          <p>No email, no account, no password to remember. Open a tool and use it immediately — that's the whole experience.</p>
-        </div>
-        <div class="card">
-          <h3>🚫 No pop-ups, no fake buttons</h3>
-          <p>We skip the redirect ads and confusing "Download" buttons other tool sites use. One clear action per page.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="info-section">
-      <h2>From the blog</h2>
-      <p style="color:var(--slate);margin-top:-6px;">Guides on getting the most out of every tool. <a href="guides.html" style="color:var(--marker);font-weight:600;">See all guides →</a></p>
     </section>
 
   </main>
@@ -164,6 +140,88 @@
   </footer>
 
 <script src="app.js"></script>
+<script>
+const input = document.getElementById('cpInput');
+const results = document.getElementById('cpResults');
+const historyEl = document.getElementById('cpHistory');
+let history = [];
+
+function hexToRgb(hex) {
+  const bigint = parseInt(hex.slice(1), 16);
+  return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
+}
+function rgbToHsl(r, g, b) {
+  r/=255; g/=255; b/=255;
+  const max = Math.max(r,g,b), min = Math.min(r,g,b);
+  let h, s, l = (max+min)/2;
+  if (max === min) { h = s = 0; }
+  else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+  return [Math.round(h*360), Math.round(s*100), Math.round(l*100)];
+}
+
+function render() {
+  const hex = input.value;
+  const [r,g,b] = hexToRgb(hex);
+  const [h,s,l] = rgbToHsl(r,g,b);
+  const formats = [
+    ['HEX', hex.toUpperCase()],
+    ['RGB', `rgb(${r}, ${g}, ${b})`],
+    ['HSL', `hsl(${h}, ${s}%, ${l}%)`]
+  ];
+  results.innerHTML = '';
+  formats.forEach(([label, val]) => {
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `<div><span class="tag">${label}</span><span class="val">${val}</span></div>`;
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-copy';
+    btn.textContent = 'Copy';
+    btn.onclick = () => copyText(val, label);
+    row.appendChild(btn);
+    results.appendChild(row);
+  });
+}
+
+function pushHistory(hex) {
+  history = [hex, ...history.filter(h => h !== hex)].slice(0, 8);
+  historyEl.innerHTML = '';
+  history.forEach(hx => {
+    const sw = document.createElement('div');
+    sw.className = 'swatch';
+    sw.style.background = hx;
+    const lbl = document.createElement('div');
+    lbl.className = 'hex-label';
+    lbl.textContent = hx.toUpperCase();
+    lbl.onclick = () => copyText(hx.toUpperCase(), 'HEX');
+    sw.appendChild(lbl);
+    historyEl.appendChild(sw);
+  });
+}
+
+input.addEventListener('input', () => { render(); pushHistory(input.value); });
+document.getElementById('cpEyedrop').addEventListener('click', async () => {
+  if (!window.EyeDropper) { showToast('Browser එක support කරන්නෙ නෑ'); return; }
+  try {
+    const ed = new EyeDropper();
+    const result = await ed.open();
+    input.value = result.sRGBHex;
+    render();
+    pushHistory(result.sRGBHex);
+  } catch (e) {}
+});
+
+render();
+pushHistory(input.value);
+</script>
 
 </body>
 </html>

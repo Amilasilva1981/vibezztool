@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Color Palette Generator — Free Tool for Thumbnails, Branding & Design</title>
+<meta name="description" content="Thumbnail, poster, brand kit එකකට ගැලපෙන color palette එකක් ක්ෂණිකව generate කරගන්න. Analogous, complementary, triadic schemes, lock feature — 100% free, register නෑ.">
+<link rel="canonical" href="https://vibezztool.com/color-palette-generator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Sinhala:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand"><span class="brand-mark">VT</span>VibezzTool<span class="dot">.</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Tools navigation">
+      <a href="index.html" class="">Home</a>
+      <a href="bio-font-generator.html" class="">Bio Font Generator</a>
+      <a href="character-counter.html" class="">Character Counter</a>
+      <a href="word-counter.html" class="">Word Counter</a>
+      <a href="password-generator.html" class="">Password Generator</a>
+      <a href="color-picker.html" class="">Color Picker</a>
+      <a href="color-palette-generator.html" class="current">Color Palette Generator</a>
+      <a href="hashtag-helper.html" class="">Hashtag Helper</a>
+      <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
+      <a href="guides.html" class="">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+    <div class="ad-slot" data-ad="header-banner" style="min-height:90px;">
+      <span>Ad space — Header Banner<br><small>Paste your Adsterra ad code inside this div in the HTML file.</small></span>
+    </div>
+
+  <main class="wrap">
+    <section class="tool-hero">
+      <span class="stamp">DESIGN TOOL · 06</span>
+      <h1>Color Palette Generator — Thumbnails &amp; Designs වලට Color Sets</h1>
+      <p class="lede">Thumbnail, poster, brand kit එකකට ගැලපෙන color palette එකක් ක්ෂණිකව generate කරගන්න. කැමති color එකක් "lock" කරලා අනිත් ඒවා විතරක් වෙනස් කරගන්නත් පුළුවන්.</p>
+    </section>
+
+    <div class="panel">
+      <div class="swatch-strip" id="paletteStrip"></div>
+      <div class="controls-row">
+        <button class="btn btn-cta" id="genBtn">🎲 Generate New Palette (Space key)</button>
+        <select id="schemeSelect">
+          <option value="random">Random</option>
+          <option value="analogous">Analogous</option>
+          <option value="complementary">Complementary</option>
+          <option value="triadic">Triadic</option>
+          <option value="monochrome">Monochrome</option>
+        </select>
+        <button class="btn btn-copy" id="copyAllBtn">Copy All HEX</button>
+      </div>
+      <p style="font-size:0.8rem;color:var(--slate);">Lock 🔒 icon එක click කරලා color එකක් fix කරගන්න — ඊළඟට generate කරද්දි ඒක වෙනස් වෙන්නෙ නෑ.</p>
+    </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">පාට එකක් හරියටම copy කරගන්න ඕන නම් Color Picker එකෙන් HEX/RGB/HSL බලාගන්න.</p>
+      <div class="tool-grid">
+      <a class="tool-card" href="bio-font-generator.html">
+        <span class="badge b-1">Aa</span>
+        <h3>Bio Font Generator</h3>
+        <p>Fancy fonts for your Instagram/TikTok bio</p>
+      </a>
+      <a class="tool-card" href="character-counter.html">
+        <span class="badge b-2">C·</span>
+        <h3>Character Counter</h3>
+        <p>Check caption & meta description limits</p>
+      </a>
+      <a class="tool-card" href="word-counter.html">
+        <span class="badge b-3">W·</span>
+        <h3>Word Counter</h3>
+        <p>Word count and reading time for blog posts</p>
+      </a>
+      <a class="tool-card" href="password-generator.html">
+        <span class="badge b-4">🔑</span>
+        <h3>Password Generator</h3>
+        <p>A strong password in one click</p>
+      </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
+      <a class="tool-card" href="hashtag-helper.html">
+        <span class="badge b-7">#</span>
+        <h3>Hashtag Helper</h3>
+        <p>Curated hashtag sets by niche</p>
+      </a>
+      </div>
+    </section>
+
+  </main>
+  <div class="wrap">
+    <div class="ad-slot" data-ad="in-content-banner" style="min-height:250px;">
+      <span>Ad space — In Content Banner<br><small>Paste your Adsterra ad code inside this div in the HTML file.</small></span>
+    </div>
+
+  </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h4>Tools</h4>
+          <a href="bio-font-generator.html">Bio Font Generator</a>
+        <a href="character-counter.html">Character Counter</a>
+        <a href="word-counter.html">Word Counter</a>
+        <a href="password-generator.html">Password Generator</a>
+        </div>
+        <div>
+          <h4>&nbsp;</h4>
+          <a href="color-picker.html">Color Picker</a>
+        <a href="color-palette-generator.html">Color Palette Generator</a>
+        <a href="hashtag-helper.html">Hashtag Helper</a>
+        <a href="image-to-webp-converter.html">Image to WebP Converter</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="guides.html">Blog / Guides</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        </div>
+        <div>
+          <h4>VibezzTool</h4>
+          <a href="index.html">No sign-up. No downloads. Runs instantly in your browser.</a>
+        </div>
+      </div>
+      <div class="bottom">© 2026 VibezzTool. Every tool runs locally in your browser — your files and text are never uploaded to a server.</div>
+    </div>
+  </footer>
+
+<script src="app.js"></script>
+<script>
+const strip = document.getElementById('paletteStrip');
+const N = 5;
+let colors = [];
+let locked = new Array(N).fill(false);
+
+function hslToHex(h, s, l) {
+  s /= 100; l /= 100;
+  const k = n => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  const toHex = x => Math.round(255 * x).toString(16).padStart(2, '0');
+  return `#${toHex(f(0))}${toHex(f(8))}${toHex(f(4))}`;
+}
+
+function genScheme() {
+  const scheme = document.getElementById('schemeSelect').value;
+  const baseHue = Math.floor(Math.random() * 360);
+  let hues = [];
+  if (scheme === 'analogous') { for (let i=0;i<N;i++) hues.push((baseHue + i*20) % 360); }
+  else if (scheme === 'complementary') { for (let i=0;i<N;i++) hues.push(i % 2 === 0 ? baseHue : (baseHue+180)%360); }
+  else if (scheme === 'triadic') { for (let i=0;i<N;i++) hues.push((baseHue + (i%3)*120) % 360); }
+  else if (scheme === 'monochrome') { for (let i=0;i<N;i++) hues.push(baseHue); }
+  else { for (let i=0;i<N;i++) hues.push(Math.floor(Math.random()*360)); }
+
+  return hues.map((h, i) => {
+    const s = scheme === 'monochrome' ? 55 : (40 + Math.random()*40);
+    const l = scheme === 'monochrome' ? (20 + i*15) : (35 + Math.random()*35);
+    return hslToHex(h, s, l);
+  });
+}
+
+function render() {
+  strip.innerHTML = '';
+  colors.forEach((hex, i) => {
+    const sw = document.createElement('div');
+    sw.className = 'swatch';
+    sw.style.background = hex;
+    const lockBtn = document.createElement('button');
+    lockBtn.className = 'lock';
+    lockBtn.textContent = locked[i] ? '🔒' : '🔓';
+    lockBtn.onclick = () => { locked[i] = !locked[i]; render(); };
+    sw.appendChild(lockBtn);
+    const lbl = document.createElement('div');
+    lbl.className = 'hex-label';
+    lbl.textContent = hex.toUpperCase();
+    lbl.onclick = () => copyText(hex.toUpperCase(), 'HEX');
+    sw.appendChild(lbl);
+    strip.appendChild(sw);
+  });
+}
+
+function generate() {
+  const fresh = genScheme();
+  colors = colors.length ? colors.map((c, i) => locked[i] ? c : fresh[i]) : fresh;
+  render();
+}
+
+document.getElementById('genBtn').addEventListener('click', generate);
+document.getElementById('schemeSelect').addEventListener('change', generate);
+document.getElementById('copyAllBtn').addEventListener('click', () => copyText(colors.map(c=>c.toUpperCase()).join(', '), 'Palette'));
+document.addEventListener('keydown', (e) => { if (e.code === 'Space' && e.target.tagName !== 'SELECT') { e.preventDefault(); generate(); } });
+
+generate();
+</script>
+
+</body>
+</html>

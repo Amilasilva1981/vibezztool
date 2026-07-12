@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to WebP Converter — Free Bulk JPG/PNG to WebP Tool (No Upload to Server)</title>
+<meta name="description" content="JPG, PNG images bulk එකේ WebP format එකට convert කරලා blog/website loading speed වැඩි කරගන්න. Quality control, ZIP download — images server එකට upload වෙන්නෙ නෑ, browser එකේම convert වේ.">
+<link rel="canonical" href="https://vibezztool.com/image-to-webp-converter.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Sinhala:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand"><span class="brand-mark">VT</span>VibezzTool<span class="dot">.</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Tools navigation">
+      <a href="index.html" class="">Home</a>
+      <a href="bio-font-generator.html" class="">Bio Font Generator</a>
+      <a href="character-counter.html" class="">Character Counter</a>
+      <a href="word-counter.html" class="">Word Counter</a>
+      <a href="password-generator.html" class="">Password Generator</a>
+      <a href="color-picker.html" class="">Color Picker</a>
+      <a href="color-palette-generator.html" class="">Color Palette Generator</a>
+      <a href="hashtag-helper.html" class="">Hashtag Helper</a>
+      <a href="image-to-webp-converter.html" class="current">Image to WebP Converter</a>
+      <a href="guides.html" class="">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+    <div class="ad-slot" data-ad="header-banner" style="min-height:90px;">
+      <span>Ad space — Header Banner<br><small>Paste your Adsterra ad code inside this div in the HTML file.</small></span>
+    </div>
+
+  <main class="wrap">
+    <section class="tool-hero">
+      <span class="stamp">IMAGE TOOL · 08</span>
+      <h1>Image to WebP Converter — Blog/Website Images Size අඩු කරගන්න</h1>
+      <p class="lede">JPG, PNG images ගොඩක් එකපාරටම WebP format එකට convert කරලා, size අඩු කරගන්න. Blog post upload speed, page loading speed වැඩි කරගන්න මේක ගොඩක් උදව් වෙනවා. Images ඔයාගේ device එකෙන් එළියට යන්නෙ නෑ — browser එකේම convert වෙන්නේ.</p>
+    </section>
+
+    <div class="panel">
+      <div id="dropZone" style="border:2px dashed var(--line); border-radius: 12px; padding: 40px 20px; text-align:center; cursor:pointer; background: var(--paper);">
+        <p style="font-weight:600; margin:0 0 6px;">📁 Images මෙතන Drag &amp; Drop කරන්න, නැත්නම් Click කරන්න</p>
+        <p style="font-size:0.82rem;color:var(--slate); margin:0;">JPG, PNG, GIF — එකපාරටම ගොඩක් images upload කරන්න පුළුවන්</p>
+        <input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
+      </div>
+
+      <div style="margin-top:18px;">
+        <label for="quality">WebP Quality: <span id="qualityVal">80</span>%</label>
+        <input type="range" id="quality" min="10" max="100" value="80">
+        <p style="font-size:0.78rem;color:var(--slate);">වැඩිය Quality = ලොකු file size. 75-85% blog images වලට හොඳම balance එක.</p>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn btn-cta" id="convertBtn" disabled>⚡ Convert to WebP</button>
+        <button class="btn btn-outline" id="downloadZip" disabled>⬇️ Download All (.zip)</button>
+      </div>
+
+      <div id="resultsList" style="margin-top:18px;"></div>
+    </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">Blog post එකට image දාන්න කලින් alt text එකට keyword density එකත් Word Counter එකෙන් check කරගන්න.</p>
+      <div class="tool-grid">
+      <a class="tool-card" href="bio-font-generator.html">
+        <span class="badge b-1">Aa</span>
+        <h3>Bio Font Generator</h3>
+        <p>Fancy fonts for your Instagram/TikTok bio</p>
+      </a>
+      <a class="tool-card" href="character-counter.html">
+        <span class="badge b-2">C·</span>
+        <h3>Character Counter</h3>
+        <p>Check caption & meta description limits</p>
+      </a>
+      <a class="tool-card" href="word-counter.html">
+        <span class="badge b-3">W·</span>
+        <h3>Word Counter</h3>
+        <p>Word count and reading time for blog posts</p>
+      </a>
+      <a class="tool-card" href="password-generator.html">
+        <span class="badge b-4">🔑</span>
+        <h3>Password Generator</h3>
+        <p>A strong password in one click</p>
+      </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
+      <a class="tool-card" href="color-palette-generator.html">
+        <span class="badge b-6">🌈</span>
+        <h3>Color Palette Generator</h3>
+        <p>Ready-made palettes for design & thumbnails</p>
+      </a>
+      </div>
+    </section>
+
+  </main>
+  <div class="wrap">
+    <div class="ad-slot" data-ad="in-content-banner" style="min-height:250px;">
+      <span>Ad space — In Content Banner<br><small>Paste your Adsterra ad code inside this div in the HTML file.</small></span>
+    </div>
+
+  </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h4>Tools</h4>
+          <a href="bio-font-generator.html">Bio Font Generator</a>
+        <a href="character-counter.html">Character Counter</a>
+        <a href="word-counter.html">Word Counter</a>
+        <a href="password-generator.html">Password Generator</a>
+        </div>
+        <div>
+          <h4>&nbsp;</h4>
+          <a href="color-picker.html">Color Picker</a>
+        <a href="color-palette-generator.html">Color Palette Generator</a>
+        <a href="hashtag-helper.html">Hashtag Helper</a>
+        <a href="image-to-webp-converter.html">Image to WebP Converter</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="guides.html">Blog / Guides</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        </div>
+        <div>
+          <h4>VibezzTool</h4>
+          <a href="index.html">No sign-up. No downloads. Runs instantly in your browser.</a>
+        </div>
+      </div>
+      <div class="bottom">© 2026 VibezzTool. Every tool runs locally in your browser — your files and text are never uploaded to a server.</div>
+    </div>
+  </footer>
+
+<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+const convertBtn = document.getElementById('convertBtn');
+const downloadZip = document.getElementById('downloadZip');
+const resultsList = document.getElementById('resultsList');
+const qualitySlider = document.getElementById('quality');
+const qualityVal = document.getElementById('qualityVal');
+
+let files = [];
+let converted = [];
+
+qualitySlider.addEventListener('input', () => qualityVal.textContent = qualitySlider.value);
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--marker)'; });
+dropZone.addEventListener('dragleave', () => dropZone.style.borderColor = 'var(--line)');
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  dropZone.style.borderColor = 'var(--line)';
+  handleFiles(e.dataTransfer.files);
+});
+fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+function handleFiles(fileListRaw) {
+  files = Array.from(fileListRaw).filter(f => f.type.startsWith('image/'));
+  convertBtn.disabled = files.length === 0;
+  resultsList.innerHTML = '';
+  downloadZip.disabled = true;
+  if (files.length) {
+    dropZone.querySelector('p').textContent = `📁 ${files.length} image(s) තෝරාගත්තා — Convert click කරන්න`;
+  }
+}
+
+function fmtSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/1024/1024).toFixed(2) + ' MB';
+}
+
+function convertOne(file, quality) {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const reader = new FileReader();
+    reader.onload = (e) => { img.src = e.target.result; };
+    reader.readAsDataURL(file);
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob((blob) => {
+        resolve({ name: file.name.replace(/\.[^.]+$/, '') + '.webp', originalSize: file.size, blob });
+      }, 'image/webp', quality / 100);
+    };
+  });
+}
+
+convertBtn.addEventListener('click', async () => {
+  const quality = parseInt(qualitySlider.value, 10);
+  convertBtn.disabled = true;
+  convertBtn.textContent = 'Converting...';
+  resultsList.innerHTML = '';
+  converted = [];
+  for (const file of files) {
+    const result = await convertOne(file, quality);
+    converted.push(result);
+    const saved = (100 - (result.blob.size / result.originalSize * 100)).toFixed(0);
+    const url = URL.createObjectURL(result.blob);
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `<div><span class="tag">${result.name}</span>
+      <span class="val">${fmtSize(result.originalSize)} → ${fmtSize(result.blob.size)}
+      <span style="color:${saved > 0 ? '#3C9D5B' : 'var(--marker)'}">(${saved > 0 ? '-' + saved + '%' : saved + '%'})</span></span></div>`;
+    const dl = document.createElement('a');
+    dl.className = 'btn btn-copy';
+    dl.textContent = 'Download';
+    dl.href = url;
+    dl.download = result.name;
+    row.appendChild(dl);
+    resultsList.appendChild(row);
+  }
+  convertBtn.disabled = false;
+  convertBtn.textContent = '⚡ Convert to WebP';
+  downloadZip.disabled = converted.length === 0;
+  showToast('Convert වුනා ✓');
+});
+
+downloadZip.addEventListener('click', async () => {
+  const zip = new JSZip();
+  converted.forEach(c => zip.file(c.name, c.blob));
+  const content = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(content);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'webp-images.zip';
+  a.click();
+});
+</script>
+
+</body>
+</html>

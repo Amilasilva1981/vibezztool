@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VibezzTool — 8 Free Online Tools for Creators & Bloggers (No Sign-Up)</title>
-<meta name="description" content="Free Instagram bio font generator, character counter, word counter, password generator, color picker, palette generator, hashtag helper, and image-to-WebP converter. No sign-up, no ads pop-ups, runs instantly in your browser.">
-<link rel="canonical" href="https://vibezztool.com/">
+<title>Character Counter — Instagram, Twitter, YouTube, Meta Description Limit Checker</title>
+<meta name="description" content="Free online character counter — Instagram caption, Twitter/X, YouTube title, Google meta description limits ක්ෂණිකව check කරගන්න. Register වෙන්න ඕන නෑ.">
+<link rel="canonical" href="https://vibezztool.com/character-counter.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Sinhala:wght@400;600&display=swap" rel="stylesheet">
@@ -20,9 +20,9 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="main-nav" id="mainNav" aria-label="Tools navigation">
-      <a href="index.html" class="current">Home</a>
+      <a href="index.html" class="">Home</a>
       <a href="bio-font-generator.html" class="">Bio Font Generator</a>
-      <a href="character-counter.html" class="">Character Counter</a>
+      <a href="character-counter.html" class="current">Character Counter</a>
       <a href="word-counter.html" class="">Word Counter</a>
       <a href="password-generator.html" class="">Password Generator</a>
       <a href="color-picker.html" class="">Color Picker</a>
@@ -39,87 +39,61 @@
     </div>
 
   <main class="wrap">
-    <section class="home-hero">
-      <span class="stamp">no sign-up · no downloads · 100% free</span>
-      <h1>The <span class="accent">8 free tools</span> every creator and blogger opens every single day</h1>
-      <p class="lede">Fonts for Instagram, caption limits, secure passwords, color palettes, hashtag sets, image compression — all in one place, running instantly in your browser. No account, no data upload, no clutter.</p>
-      <a href="bio-font-generator.html" class="btn btn-cta btn-pulse" style="margin-top:18px;">⚡ Start with Bio Font Generator</a>
+    <section class="tool-hero">
+      <span class="stamp">TEXT TOOL · 02</span>
+      <h1>Character Counter — Caption &amp; Meta Description Limit Checker</h1>
+      <p class="lede">Instagram caption, Twitter/X post, YouTube title, Google meta description — ඕනෑම platform එකක character limit එක ඉක්මවනවද කියලා type කරන කොටම බලාගන්න.</p>
     </section>
 
-    <section>
+    <div class="panel">
+      <textarea id="ccInput" placeholder="මෙතන type කරන්න හෝ paste කරන්න..."></textarea>
+      <div class="readout-grid">
+        <div class="readout"><span class="num" id="ccChars">0</span><span class="lbl">Characters</span></div>
+        <div class="readout"><span class="num" id="ccNoSpace">0</span><span class="lbl">No spaces</span></div>
+        <div class="readout"><span class="num" id="ccWords">0</span><span class="lbl">Words</span></div>
+        <div class="readout"><span class="num" id="ccSentences">0</span><span class="lbl">Sentences</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Platform Limits</h2>
+      <div id="ccPlatforms"></div>
+    </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">Blog post එකක් ලියනවනම් Word Counter එකෙන් reading time එකත් බලාගන්න.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
         <h3>Bio Font Generator</h3>
         <p>Fancy fonts for your Instagram/TikTok bio</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
-      </a>
-      <a class="tool-card" href="character-counter.html">
-        <span class="badge b-2">C·</span>
-        <h3>Character Counter</h3>
-        <p>Check caption & meta description limits</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="word-counter.html">
         <span class="badge b-3">W·</span>
         <h3>Word Counter</h3>
         <p>Word count and reading time for blog posts</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="password-generator.html">
         <span class="badge b-4">🔑</span>
         <h3>Password Generator</h3>
         <p>A strong password in one click</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="color-picker.html">
         <span class="badge b-5">🎨</span>
         <h3>Color Picker</h3>
         <p>Grab HEX / RGB / HSL codes instantly</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="color-palette-generator.html">
         <span class="badge b-6">🌈</span>
         <h3>Color Palette Generator</h3>
         <p>Ready-made palettes for design & thumbnails</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="hashtag-helper.html">
         <span class="badge b-7">#</span>
         <h3>Hashtag Helper</h3>
         <p>Curated hashtag sets by niche</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
-      </a>
-      <a class="tool-card" href="image-to-webp-converter.html">
-        <span class="badge b-2">🖼️</span>
-        <h3>Image to WebP Converter</h3>
-        <p>Shrink image size without losing quality</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       </div>
-    </section>
-
-    <section class="info-section">
-      <h2>Why creators trust VibezzTool</h2>
-      <div class="info-grid">
-        <div class="card">
-          <h3>🔒 Nothing leaves your browser</h3>
-          <p>Every tool — from the password generator to the image converter — runs as client-side JavaScript. Your text, images, and passwords are never uploaded anywhere.</p>
-        </div>
-        <div class="card">
-          <h3>⚡ Zero sign-up, zero friction</h3>
-          <p>No email, no account, no password to remember. Open a tool and use it immediately — that's the whole experience.</p>
-        </div>
-        <div class="card">
-          <h3>🚫 No pop-ups, no fake buttons</h3>
-          <p>We skip the redirect ads and confusing "Download" buttons other tool sites use. One clear action per page.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="info-section">
-      <h2>From the blog</h2>
-      <p style="color:var(--slate);margin-top:-6px;">Guides on getting the most out of every tool. <a href="guides.html" style="color:var(--marker);font-weight:600;">See all guides →</a></p>
     </section>
 
   </main>
@@ -164,6 +138,51 @@
   </footer>
 
 <script src="app.js"></script>
+<script>
+const PLATFORMS = [
+  ['Twitter / X post', 280],
+  ['Instagram caption', 2200],
+  ['Instagram bio', 150],
+  ['Facebook post (visible before "See more")', 477],
+  ['YouTube title', 100],
+  ['YouTube description', 5000],
+  ['Google meta description', 160],
+  ['Google title tag', 60],
+  ['TikTok caption', 2200],
+  ['Pinterest description', 500],
+];
+
+const input = document.getElementById('ccInput');
+const platformsEl = document.getElementById('ccPlatforms');
+
+function render() {
+  const val = input.value;
+  const chars = val.length;
+  const noSpace = val.replace(/\s/g, '').length;
+  const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+  const sentences = val.trim() ? (val.match(/[.!?।]+/g) || []).length || (val.trim() ? 1 : 0) : 0;
+
+  document.getElementById('ccChars').textContent = chars;
+  document.getElementById('ccNoSpace').textContent = noSpace;
+  document.getElementById('ccWords').textContent = words;
+  document.getElementById('ccSentences').textContent = sentences;
+
+  platformsEl.innerHTML = '';
+  PLATFORMS.forEach(([name, limit]) => {
+    const remaining = limit - chars;
+    const over = remaining < 0;
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `<div><span class="tag">${name} — limit ${limit}</span>
+      <span class="val" style="color:${over ? 'var(--marker)' : 'var(--charcoal)'}">
+        ${over ? (Math.abs(remaining) + ' ඉක්මවලා ✕') : (remaining + ' ඉතුරු ✓')}
+      </span></div>`;
+    platformsEl.appendChild(row);
+  });
+}
+input.addEventListener('input', render);
+render();
+</script>
 
 </body>
 </html>

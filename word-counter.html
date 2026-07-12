@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VibezzTool — 8 Free Online Tools for Creators & Bloggers (No Sign-Up)</title>
-<meta name="description" content="Free Instagram bio font generator, character counter, word counter, password generator, color picker, palette generator, hashtag helper, and image-to-WebP converter. No sign-up, no ads pop-ups, runs instantly in your browser.">
-<link rel="canonical" href="https://vibezztool.com/">
+<title>Word Counter — Free Blog Word Count & Reading Time Calculator</title>
+<meta name="description" content="Blog post, essay, assignment වචන ගණන, paragraph ගණන, reading time ක්ෂණිකව check කරගන්න. Keyword density ටිකකුත් බලාගන්න පුළුවන් — 100% free, register නෑ.">
+<link rel="canonical" href="https://vibezztool.com/word-counter.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Sinhala:wght@400;600&display=swap" rel="stylesheet">
@@ -20,10 +20,10 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="main-nav" id="mainNav" aria-label="Tools navigation">
-      <a href="index.html" class="current">Home</a>
+      <a href="index.html" class="">Home</a>
       <a href="bio-font-generator.html" class="">Bio Font Generator</a>
       <a href="character-counter.html" class="">Character Counter</a>
-      <a href="word-counter.html" class="">Word Counter</a>
+      <a href="word-counter.html" class="current">Word Counter</a>
       <a href="password-generator.html" class="">Password Generator</a>
       <a href="color-picker.html" class="">Color Picker</a>
       <a href="color-palette-generator.html" class="">Color Palette Generator</a>
@@ -39,87 +39,62 @@
     </div>
 
   <main class="wrap">
-    <section class="home-hero">
-      <span class="stamp">no sign-up · no downloads · 100% free</span>
-      <h1>The <span class="accent">8 free tools</span> every creator and blogger opens every single day</h1>
-      <p class="lede">Fonts for Instagram, caption limits, secure passwords, color palettes, hashtag sets, image compression — all in one place, running instantly in your browser. No account, no data upload, no clutter.</p>
-      <a href="bio-font-generator.html" class="btn btn-cta btn-pulse" style="margin-top:18px;">⚡ Start with Bio Font Generator</a>
+    <section class="tool-hero">
+      <span class="stamp">TEXT TOOL · 03</span>
+      <h1>Word Counter — Blog Post වචන ගණන &amp; කියවීමේ වේලාව</h1>
+      <p class="lede">Blog post එකක්, essay එකක්, assignment එකක් ලියද්දී වචන ගණන, paragraph ගණන, reader කෙනෙක්ට කියවන්න ගතවෙන වේලාව ක්ෂණිකව බලාගන්න.</p>
     </section>
 
-    <section>
+    <div class="panel">
+      <textarea id="wcInput" placeholder="ඔයාගේ blog post එක හෝ draft එක මෙතන paste කරන්න..." style="min-height:220px;"></textarea>
+      <div class="readout-grid">
+        <div class="readout"><span class="num" id="wcWords">0</span><span class="lbl">Words</span></div>
+        <div class="readout"><span class="num" id="wcChars">0</span><span class="lbl">Characters</span></div>
+        <div class="readout"><span class="num" id="wcParas">0</span><span class="lbl">Paragraphs</span></div>
+        <div class="readout"><span class="num" id="wcTime">0 min</span><span class="lbl">Reading time</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>වැඩිපුරම පාවිච්චි කරපු වචන (Top 5)</h2>
+      <div id="wcTop"></div>
+      <p style="font-size:0.82rem;color:var(--slate);margin-top:10px;">SEO tip: එකම keyword එක ටිකක් වැඩිය repeat වුනොත් Google එකට "keyword stuffing" විදිහට පේන්න පුළුවන්.</p>
+    </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">Social media caption එකකට short text ලියනවනම් Character Counter එක බලන්න.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
         <h3>Bio Font Generator</h3>
         <p>Fancy fonts for your Instagram/TikTok bio</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="character-counter.html">
         <span class="badge b-2">C·</span>
         <h3>Character Counter</h3>
         <p>Check caption & meta description limits</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
-      </a>
-      <a class="tool-card" href="word-counter.html">
-        <span class="badge b-3">W·</span>
-        <h3>Word Counter</h3>
-        <p>Word count and reading time for blog posts</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="password-generator.html">
         <span class="badge b-4">🔑</span>
         <h3>Password Generator</h3>
         <p>A strong password in one click</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="color-picker.html">
         <span class="badge b-5">🎨</span>
         <h3>Color Picker</h3>
         <p>Grab HEX / RGB / HSL codes instantly</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="color-palette-generator.html">
         <span class="badge b-6">🌈</span>
         <h3>Color Palette Generator</h3>
         <p>Ready-made palettes for design & thumbnails</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       <a class="tool-card" href="hashtag-helper.html">
         <span class="badge b-7">#</span>
         <h3>Hashtag Helper</h3>
         <p>Curated hashtag sets by niche</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
-      </a>
-      <a class="tool-card" href="image-to-webp-converter.html">
-        <span class="badge b-2">🖼️</span>
-        <h3>Image to WebP Converter</h3>
-        <p>Shrink image size without losing quality</p>
-        <span style="font-size:0.78rem;font-weight:700;color:var(--marker);">Try it free →</span>
       </a>
       </div>
-    </section>
-
-    <section class="info-section">
-      <h2>Why creators trust VibezzTool</h2>
-      <div class="info-grid">
-        <div class="card">
-          <h3>🔒 Nothing leaves your browser</h3>
-          <p>Every tool — from the password generator to the image converter — runs as client-side JavaScript. Your text, images, and passwords are never uploaded anywhere.</p>
-        </div>
-        <div class="card">
-          <h3>⚡ Zero sign-up, zero friction</h3>
-          <p>No email, no account, no password to remember. Open a tool and use it immediately — that's the whole experience.</p>
-        </div>
-        <div class="card">
-          <h3>🚫 No pop-ups, no fake buttons</h3>
-          <p>We skip the redirect ads and confusing "Download" buttons other tool sites use. One clear action per page.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="info-section">
-      <h2>From the blog</h2>
-      <p style="color:var(--slate);margin-top:-6px;">Guides on getting the most out of every tool. <a href="guides.html" style="color:var(--marker);font-weight:600;">See all guides →</a></p>
     </section>
 
   </main>
@@ -164,6 +139,45 @@
   </footer>
 
 <script src="app.js"></script>
+<script>
+const input = document.getElementById('wcInput');
+const STOP = new Set(['the','a','an','is','are','was','were','to','of','and','in','on','for','with','that','this','it','as','at','by','be','or','from','you','your']);
+
+function render() {
+  const val = input.value;
+  const trimmed = val.trim();
+  const words = trimmed ? trimmed.split(/\s+/) : [];
+  const wordCount = words.length;
+  const chars = val.length;
+  const paras = trimmed ? trimmed.split(/\n\s*\n/).filter(p => p.trim().length).length : 0;
+  const minutes = Math.max(1, Math.round(wordCount / 200));
+
+  document.getElementById('wcWords').textContent = wordCount;
+  document.getElementById('wcChars').textContent = chars;
+  document.getElementById('wcParas').textContent = paras;
+  document.getElementById('wcTime').textContent = (wordCount ? minutes : 0) + ' min';
+
+  const freq = {};
+  words.forEach(w => {
+    const clean = w.toLowerCase().replace(/[^a-z0-9\u0d80-\u0dff]/gi, '');
+    if (!clean || STOP.has(clean) || clean.length < 3) return;
+    freq[clean] = (freq[clean] || 0) + 1;
+  });
+  const top = Object.entries(freq).sort((a,b) => b[1]-a[1]).slice(0,5);
+  const topEl = document.getElementById('wcTop');
+  topEl.innerHTML = '';
+  if (!top.length) { topEl.innerHTML = '<p style="color:var(--slate);font-size:0.88rem;">Text එකක් type කරන්න.</p>'; return; }
+  top.forEach(([word, count]) => {
+    const pct = ((count / wordCount) * 100).toFixed(1);
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `<span class="val">${word}</span><span class="tag">${count} වර — ${pct}%</span>`;
+    topEl.appendChild(row);
+  });
+}
+input.addEventListener('input', render);
+render();
+</script>
 
 </body>
 </html>
