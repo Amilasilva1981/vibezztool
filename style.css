@@ -112,7 +112,6 @@ img, svg { display: block; }
 
 /* ---------- ad slots ---------- */
 .ad-slot {
-  border: 1.5px dashed var(--line);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -122,8 +121,7 @@ img, svg { display: block; }
   font-size: 0.8rem;
   line-height: 1.5;
   margin: 18px 0;
-  background: repeating-linear-gradient(45deg, #ffffff, #ffffff 10px, #F3F1E9 10px, #F3F1E9 20px);
-  padding: 10px;
+  overflow: hidden;
 }
 .ad-slot small { font-size: 0.7rem; color: #9195AC; }
 

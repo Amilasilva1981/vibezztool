@@ -51,9 +51,24 @@
     </div>
   </header>
 
-    <div class="ad-slot" data-ad="header-banner" style="min-height:90px;">
-      <span>Ad space — Header Banner<br><small>Paste your Adsterra ad code inside this div in the HTML file.</small></span>
-    </div>
+    <div class="ad-slot" id="header-ad-container" style="min-height:90px;"></div>
+    <script>
+    (function () {
+      var isDesktop = window.innerWidth >= 768;
+      var key = isDesktop ? '7e436d6bb223e46e9331993baa2993f2' : 'e602a045ae6e46ce3e7855c8cf71b65f';
+      var w = isDesktop ? 728 : 300;
+      var h = isDesktop ? 90 : 250;
+      var container = document.getElementById('header-ad-container');
+      if (!container) return;
+      container.style.minHeight = h + 'px';
+      var opts = document.createElement('script');
+      opts.text = "atOptions = { 'key': '" + key + "', 'format': 'iframe', 'height': " + h + ", 'width': " + w + ", 'params': {} };";
+      container.appendChild(opts);
+      var inv = document.createElement('script');
+      inv.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+      container.appendChild(inv);
+    })();
+    </script>
 
   <main class="wrap">
     <section class="tool-hero">
@@ -117,8 +132,9 @@
 
   </main>
   <div class="wrap">
-    <div class="ad-slot" data-ad="in-content-banner" style="min-height:250px;">
-      <span>Ad space — In Content Banner<br><small>Paste your Adsterra ad code inside this div in the HTML file.</small></span>
+    <div class="ad-slot" id="in-content-ad-container" style="min-height:100px;">
+      <script async data-cfasync="false" src="https://pl30335796.effectivecpmnetwork.com/1e27890c9ddae0c61a0d72598500123b/invoke.js"></script>
+      <div id="container-1e27890c9ddae0c61a0d72598500123b"></div>
     </div>
 
   </div>
