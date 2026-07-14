@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hashtag Helper — Free Instagram & TikTok Hashtag Generator by Niche</title>
-<meta name="description" content="Get a curated mix of popular, medium, and niche hashtags for Fashion, Food, Travel, Fitness, Business, Tech, and more. Easy copy-paste, no sign-up.">
+<title>Hashtag Generator — Create Custom Hashtags From Any Keyword, Free</title>
+<meta name="description" content="Type any keyword or topic and instantly generate a ready-to-use hashtag set, plus curated niche packs for Fashion, Food, Travel, Fitness, Business, Tech, and more. No sign-up.">
 <link rel="canonical" href="https://vibezztool.com/hashtag-helper.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -46,6 +46,8 @@
       <a href="color-palette-generator.html" class="">Color Palette Generator</a>
       <a href="hashtag-helper.html" class="current">Hashtag Helper</a>
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
+      <a href="image-compressor.html" class="">Image Compressor (KB Target)</a>
+      <a href="favicon-generator.html" class="">Favicon Generator</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
     </div>
@@ -73,13 +75,31 @@
   <main class="wrap">
     <section class="tool-hero">
       <span class="stamp">SOCIAL TOOL · 07</span>
-      <h1>Hashtag Helper — Curated Hashtags for Your Niche</h1>
-      <p class="lede">Get a ready-made mix of popular, medium, and niche hashtags for your content category — instantly, with Instagram's 30-tag limit in mind.</p>
+      <h1>Hashtag Generator — Custom Hashtags From Your Own Keywords</h1>
+      <p class="lede">Type any word or topic and instantly generate a full set of ready-to-use hashtags built from it — plus curated niche packs for common content categories. No sign-up, Instagram's 30-tag limit built in.</p>
     </section>
 
     <div class="panel">
+      <h2>Generate From Your Own Keywords</h2>
+      <label for="customInput">Enter one or more keywords (comma separated)</label>
+      <input type="text" id="customInput" placeholder="e.g. coffee, morning routine, small business">
+
+      <div class="readout-grid" style="margin-top:16px;">
+        <div class="readout"><span class="num" id="customCount">0</span><span class="lbl">Hashtags</span></div>
+        <div class="readout"><span class="num" id="customChars">0</span><span class="lbl">Characters</span></div>
+      </div>
+
+      <div class="output-box" id="customOutput" style="margin-top:16px;">Type a keyword above to generate hashtags.</div>
+      <div class="controls-row">
+        <button class="btn btn-cta" id="copyCustom">Copy All Hashtags</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Or Pick a Ready-Made Niche Pack</h2>
       <label for="niche">Choose Your Niche</label>
       <select id="niche">
+        <option value="">— Select a niche —</option>
         <option value="fashion">Fashion &amp; Style</option>
         <option value="food">Food &amp; Cooking</option>
         <option value="travel">Travel</option>
@@ -88,7 +108,6 @@
         <option value="tech">Tech &amp; Gadgets</option>
         <option value="beauty">Beauty &amp; Makeup</option>
         <option value="photography">Photography</option>
-        <option value="srilanka">Sri Lanka (Local)</option>
       </select>
 
       <div class="readout-grid" style="margin-top:16px;">
@@ -96,9 +115,9 @@
         <div class="readout"><span class="num" id="tagChars">0</span><span class="lbl">Characters</span></div>
       </div>
 
-      <div class="output-box" id="tagOutput" style="margin-top:16px;"></div>
+      <div class="output-box" id="tagOutput" style="margin-top:16px;">Select a niche above to generate hashtags.</div>
       <div class="controls-row">
-        <button class="btn btn-accent" id="copyTags">Copy All Hashtags</button>
+        <button class="btn btn-copy" id="copyTags">Copy All Hashtags</button>
       </div>
     </div>
     <section class="cross-promo">
@@ -162,6 +181,8 @@
         <a href="color-palette-generator.html">Color Palette Generator</a>
         <a href="hashtag-helper.html">Hashtag Helper</a>
         <a href="image-to-webp-converter.html">Image to WebP Converter</a>
+        <a href="image-compressor.html">Image Compressor (KB Target)</a>
+        <a href="favicon-generator.html">Favicon Generator</a>
         </div>
         <div>
           <h4>Company</h4>
@@ -182,6 +203,54 @@
 
 <script src="app.js"></script>
 <script>
+// ---------- Custom keyword-based generator ----------
+const MODIFIERS = [
+  '', 'daily', 'life', 'lover', 'addict', 'gram', 'style', 'vibes', 'world',
+  'community', 'official', 'tips', 'goals', 'love', 'obsessed', 'mood',
+  'game', 'hub', 'zone', 'central', 'lifestyle', 'inspo', 'love'
+];
+
+function slugifyWord(w) {
+  return w.trim().toLowerCase().replace(/[^a-z0-9]+/g, '');
+}
+
+function generateFromKeywords(raw) {
+  const keywords = raw.split(',').map(k => slugifyWord(k)).filter(Boolean);
+  if (!keywords.length) return [];
+  const tags = new Set();
+  keywords.forEach(k => {
+    tags.add('#' + k);
+    MODIFIERS.forEach(mod => {
+      if (!mod) return;
+      tags.add('#' + k + mod);
+      tags.add('#' + mod + k);
+    });
+  });
+  // combine pairs of keywords if more than one was entered
+  if (keywords.length > 1) {
+    for (let i = 0; i < keywords.length; i++) {
+      for (let j = 0; j < keywords.length; j++) {
+        if (i !== j) tags.add('#' + keywords[i] + keywords[j]);
+      }
+    }
+  }
+  return Array.from(tags).slice(0, 30);
+}
+
+const customInput = document.getElementById('customInput');
+const customOutput = document.getElementById('customOutput');
+
+function renderCustom() {
+  const tags = generateFromKeywords(customInput.value);
+  const text = tags.join(' ');
+  customOutput.textContent = text || 'Type a keyword above to generate hashtags.';
+  document.getElementById('customCount').textContent = tags.length;
+  document.getElementById('customChars').textContent = text.length;
+}
+customInput.addEventListener('input', renderCustom);
+document.getElementById('copyCustom').addEventListener('click', () => copyText(customOutput.textContent, 'Hashtags'));
+
+// ---------- Curated niche packs ----------
 const SETS = {
   fashion: {
     big: ['#fashion','#style','#ootd','#fashionblogger'],
@@ -191,12 +260,12 @@ const SETS = {
   food: {
     big: ['#foodie','#food','#foodphotography','#instafood'],
     mid: ['#homecooking','#foodblogger','#tastyfood','#foodstagram','#yummy'],
-    niche: ['#srilankanfood','#homemaderecipe','#comfortfood','#foodculture']
+    niche: ['#homemaderecipe','#comfortfood','#foodculture','#foodlover']
   },
   travel: {
     big: ['#travel','#travelgram','#wanderlust','#travelphotography'],
     mid: ['#explore','#traveltheworld','#solotravel','#travelblogger','#adventuretime'],
-    niche: ['#hiddengem','#offthebeatenpath','#srilankatravel','#islandlife']
+    niche: ['#hiddengem','#offthebeatenpath','#islandlife','#travelmore']
   },
   fitness: {
     big: ['#fitness','#gym','#workout','#fitnessmotivation'],
@@ -206,12 +275,12 @@ const SETS = {
   business: {
     big: ['#business','#entrepreneur','#success','#marketing'],
     mid: ['#smallbusiness','#digitalmarketing','#sidehustle','#startup','#businessowner'],
-    niche: ['#srilankabusiness','#bootstrapped','#solopreneur','#passiveincomeideas']
+    niche: ['#bootstrapped','#solopreneur','#passiveincome','#creatoreconomy']
   },
   tech: {
     big: ['#technology','#tech','#innovation','#gadgets'],
     mid: ['#techtrends','#ai','#software','#programming','#coding'],
-    niche: ['#techsrilanka','#buildinpublic','#devlife','#automation']
+    niche: ['#buildinpublic','#devlife','#automation','#techtips']
   },
   beauty: {
     big: ['#beauty','#makeup','#skincare','#beautyblogger'],
@@ -221,12 +290,7 @@ const SETS = {
   photography: {
     big: ['#photography','#photooftheday','#photographer','#instaphoto'],
     mid: ['#portraitphotography','#naturephotography','#streetphotography','#capturemoments','#photoshoot'],
-    niche: ['#mobilephotography','#goldenhourphotography','#srilankaphotography','#candidshots']
-  },
-  srilanka: {
-    big: ['#srilanka','#visitsrilanka','#colombo','#srilankan'],
-    mid: ['#srilankatravel','#ceylon','#srilankalife','#lka','#lovesrilanka'],
-    niche: ['#srilankanbusiness','#srilankablogger','#discoversrilanka','#srilankandiaspora']
+    niche: ['#mobilephotography','#goldenhourphotography','#candidshots','#photoeditor']
   }
 };
 
@@ -234,6 +298,12 @@ const select = document.getElementById('niche');
 const output = document.getElementById('tagOutput');
 
 function render() {
+  if (!select.value) {
+    output.textContent = 'Select a niche above to generate hashtags.';
+    document.getElementById('tagCount').textContent = 0;
+    document.getElementById('tagChars').textContent = 0;
+    return;
+  }
   const set = SETS[select.value];
   const tags = [...set.big, ...set.mid, ...set.niche];
   const text = tags.join(' ');

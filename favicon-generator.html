@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image to WebP Converter — Free Bulk JPG/PNG to WebP Tool (No Upload to Server)</title>
-<meta name="description" content="Convert JPG and PNG images to WebP in bulk to speed up your blog or website. Adjustable quality, ZIP download — images never leave your browser.">
-<link rel="canonical" href="https://vibezztool.com/image-to-webp-converter.html">
+<title>Favicon Generator — Create a Full Favicon Set From Any Image, Free</title>
+<meta name="description" content="Upload a logo and instantly generate every favicon size a modern website needs — including a real .ico file — plus the exact HTML code to add them to your site. No sign-up, runs entirely in your browser.">
+<link rel="canonical" href="https://vibezztool.com/favicon-generator.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -45,9 +45,9 @@
       <a href="color-picker.html" class="">Color Picker</a>
       <a href="color-palette-generator.html" class="">Color Palette Generator</a>
       <a href="hashtag-helper.html" class="">Hashtag Helper</a>
-      <a href="image-to-webp-converter.html" class="current">Image to WebP Converter</a>
+      <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
       <a href="image-compressor.html" class="">Image Compressor (KB Target)</a>
-      <a href="favicon-generator.html" class="">Favicon Generator</a>
+      <a href="favicon-generator.html" class="current">Favicon Generator</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
     </div>
@@ -74,34 +74,42 @@
 
   <main class="wrap">
     <section class="tool-hero">
-      <span class="stamp">IMAGE TOOL · 08</span>
-      <h1>Image to WebP Converter — Shrink Images for Blogs &amp; Websites</h1>
-      <p class="lede">Convert JPG, PNG, or GIF images to WebP in bulk and shrink file size without losing quality. Smaller images mean faster page loads and quicker uploads. Your images never leave your device — everything converts right in your browser.</p>
+      <span class="stamp">WEB TOOL · 10</span>
+      <h1>Favicon Generator — Turn Any Image Into a Complete Favicon Set</h1>
+      <p class="lede">Upload a logo or image and get every favicon size a modern website needs — browser tab icon, Apple touch icon, Android home screen icon, and a real multi-size .ico file — ready to drop into your site's code.</p>
     </section>
 
     <div class="panel">
       <div id="dropZone" style="border:2px dashed var(--line); border-radius: 12px; padding: 40px 20px; text-align:center; cursor:pointer; background: var(--paper);">
-        <p style="font-weight:600; margin:0 0 6px;">📁 Drag &amp; Drop Images Here, or Click to Browse</p>
-        <p style="font-size:0.82rem;color:var(--slate); margin:0;">JPG, PNG, GIF — upload as many images as you like at once</p>
-        <input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
+        <p style="font-weight:600; margin:0 0 6px;">📁 Drag &amp; Drop a Square Image Here, or Click to Browse</p>
+        <p style="font-size:0.82rem;color:var(--slate); margin:0;">PNG or JPG, ideally at least 512×512px and square</p>
+        <input type="file" id="fileInput" accept="image/*" style="display:none;">
       </div>
 
-      <div style="margin-top:18px;">
-        <label for="quality">WebP Quality: <span id="qualityVal">80</span>%</label>
-        <input type="range" id="quality" min="10" max="100" value="80">
-        <p style="font-size:0.78rem;color:var(--slate);">Higher quality = larger file size. 75-85% is the best balance for most blog images.</p>
+      <div id="preview" style="margin-top:18px; display:none;">
+        <div class="readout-grid">
+          <div class="readout"><span class="num" id="dimText">—</span><span class="lbl">Original Size</span></div>
+        </div>
       </div>
 
       <div class="controls-row">
-        <button class="btn btn-cta" id="convertBtn" disabled>⚡ Convert to WebP</button>
-        <button class="btn btn-outline" id="downloadZip" disabled>⬇️ Download All (.zip)</button>
+        <button class="btn btn-cta" id="generateBtn" disabled>⚡ Generate Favicon Set</button>
+        <button class="btn btn-outline" id="downloadZip" disabled>⬇️ Download All (.zip + .ico)</button>
       </div>
 
       <div id="resultsList" style="margin-top:18px;"></div>
+
+      <div id="codeSnippet" style="display:none; margin-top:18px;">
+        <h2 style="font-size:1rem;">Add This to Your Site's &lt;head&gt;</h2>
+        <div class="output-box" id="snippetOutput" style="font-size:0.85rem;"></div>
+        <div class="controls-row">
+          <button class="btn btn-copy" id="copySnippet">Copy Code</button>
+        </div>
+      </div>
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
-      <p class="hint">Adding this image to a blog post? Check your alt text and keyword density with the Word Counter.</p>
+      <p class="hint">Need to shrink the source image first? Try the Image Compressor.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
@@ -185,16 +193,17 @@
 <script>
 const dropZone = document.getElementById('dropZone');
 const fileInput = document.getElementById('fileInput');
-const convertBtn = document.getElementById('convertBtn');
+const generateBtn = document.getElementById('generateBtn');
 const downloadZip = document.getElementById('downloadZip');
 const resultsList = document.getElementById('resultsList');
-const qualitySlider = document.getElementById('quality');
-const qualityVal = document.getElementById('qualityVal');
+const preview = document.getElementById('preview');
+const codeSnippet = document.getElementById('codeSnippet');
+const snippetOutput = document.getElementById('snippetOutput');
 
-let files = [];
-let converted = [];
+let sourceImg = null;
+let generated = {}; // name -> blob
 
-qualitySlider.addEventListener('input', () => qualityVal.textContent = qualitySlider.value);
+const SIZES = [16, 32, 180, 192, 512];
 
 dropZone.addEventListener('click', () => fileInput.click());
 dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--marker)'; });
@@ -202,85 +211,132 @@ dropZone.addEventListener('dragleave', () => dropZone.style.borderColor = 'var(-
 dropZone.addEventListener('drop', (e) => {
   e.preventDefault();
   dropZone.style.borderColor = 'var(--line)';
-  handleFiles(e.dataTransfer.files);
+  handleFile(e.dataTransfer.files[0]);
 });
-fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+fileInput.addEventListener('change', (e) => handleFile(e.target.files[0]));
 
-function handleFiles(fileListRaw) {
-  files = Array.from(fileListRaw).filter(f => f.type.startsWith('image/'));
-  convertBtn.disabled = files.length === 0;
-  resultsList.innerHTML = '';
-  downloadZip.disabled = true;
-  if (files.length) {
-    dropZone.querySelector('p').textContent = `📁 ${files.length} image(s) selected — click Convert`;
-  }
-}
-
-function fmtSize(bytes) {
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
-  return (bytes/1024/1024).toFixed(2) + ' MB';
-}
-
-function convertOne(file, quality) {
-  return new Promise((resolve) => {
+function handleFile(file) {
+  if (!file || !file.type.startsWith('image/')) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
     const img = new Image();
-    const reader = new FileReader();
-    reader.onload = (e) => { img.src = e.target.result; };
-    reader.readAsDataURL(file);
     img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      canvas.toBlob((blob) => {
-        resolve({ name: file.name.replace(/\.[^.]+$/, '') + '.webp', originalSize: file.size, blob });
-      }, 'image/webp', quality / 100);
+      sourceImg = img;
+      preview.style.display = 'block';
+      document.getElementById('dimText').textContent = img.width + '×' + img.height;
+      generateBtn.disabled = false;
+      dropZone.querySelector('p').textContent = '📁 Image loaded — click Generate';
     };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function resizeToBlob(img, size) {
+  return new Promise((resolve) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    // center-crop to square first if not already square
+    const side = Math.min(img.width, img.height);
+    const sx = (img.width - side) / 2;
+    const sy = (img.height - side) / 2;
+    ctx.drawImage(img, sx, sy, side, side, 0, 0, size, size);
+    canvas.toBlob((blob) => resolve(blob), 'image/png');
   });
 }
 
-convertBtn.addEventListener('click', async () => {
-  const quality = parseInt(qualitySlider.value, 10);
-  convertBtn.disabled = true;
-  convertBtn.textContent = 'Converting...';
+async function buildIco(blobs16_32_48) {
+  const buffers = await Promise.all(blobs16_32_48.map(b => b.arrayBuffer()));
+  const count = buffers.length;
+  const headerSize = 6 + count * 16;
+  let totalSize = headerSize;
+  buffers.forEach(buf => totalSize += buf.byteLength);
+
+  const out = new Uint8Array(totalSize);
+  const view = new DataView(out.buffer);
+  view.setUint16(0, 0, true);
+  view.setUint16(2, 1, true);
+  view.setUint16(4, count, true);
+
+  let offset = headerSize;
+  const sizes = [16, 32, 48];
+  buffers.forEach((buf, i) => {
+    const entryOffset = 6 + i * 16;
+    const size = sizes[i];
+    view.setUint8(entryOffset + 0, size === 256 ? 0 : size);
+    view.setUint8(entryOffset + 1, size === 256 ? 0 : size);
+    view.setUint8(entryOffset + 2, 0);
+    view.setUint8(entryOffset + 3, 0);
+    view.setUint16(entryOffset + 4, 1, true);
+    view.setUint16(entryOffset + 6, 32, true);
+    view.setUint32(entryOffset + 8, buf.byteLength, true);
+    view.setUint32(entryOffset + 12, offset, true);
+    out.set(new Uint8Array(buf), offset);
+    offset += buf.byteLength;
+  });
+
+  return new Blob([out], { type: 'image/x-icon' });
+}
+
+generateBtn.addEventListener('click', async () => {
+  generateBtn.disabled = true;
+  generateBtn.textContent = 'Generating...';
   resultsList.innerHTML = '';
-  converted = [];
-  for (const file of files) {
-    const result = await convertOne(file, quality);
-    converted.push(result);
-    const saved = (100 - (result.blob.size / result.originalSize * 100)).toFixed(0);
-    const url = URL.createObjectURL(result.blob);
+  generated = {};
+
+  const nameFor = (s) => `favicon-${s}x${s}.png`;
+  for (const s of SIZES) {
+    const blob = await resizeToBlob(sourceImg, s);
+    generated[nameFor(s)] = blob;
+  }
+  // build a real multi-size .ico from 16/32/48
+  const ico16 = await resizeToBlob(sourceImg, 16);
+  const ico32 = await resizeToBlob(sourceImg, 32);
+  const ico48 = await resizeToBlob(sourceImg, 48);
+  generated['favicon.ico'] = await buildIco([ico16, ico32, ico48]);
+
+  Object.entries(generated).forEach(([name, blob]) => {
+    const url = URL.createObjectURL(blob);
     const row = document.createElement('div');
     row.className = 'result-row';
-    row.innerHTML = `<div><span class="tag">${result.name}</span>
-      <span class="val">${fmtSize(result.originalSize)} → ${fmtSize(result.blob.size)}
-      <span style="color:${saved > 0 ? '#3C9D5B' : 'var(--marker)'}">(${saved > 0 ? '-' + saved + '%' : saved + '%'})</span></span></div>`;
+    row.innerHTML = `<span class="tag">${name}</span>`;
     const dl = document.createElement('a');
     dl.className = 'btn btn-copy';
     dl.textContent = 'Download';
     dl.href = url;
-    dl.download = result.name;
+    dl.download = name;
     row.appendChild(dl);
     resultsList.appendChild(row);
-  }
-  convertBtn.disabled = false;
-  convertBtn.textContent = '⚡ Convert to WebP';
-  downloadZip.disabled = converted.length === 0;
-  showToast('Converted ✓');
+  });
+
+  snippetOutput.textContent =
+`<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192x192.png">`;
+  codeSnippet.style.display = 'block';
+
+  generateBtn.disabled = false;
+  generateBtn.textContent = '⚡ Generate Favicon Set';
+  downloadZip.disabled = false;
+  showToast('Favicons generated ✓');
 });
 
 downloadZip.addEventListener('click', async () => {
   const zip = new JSZip();
-  converted.forEach(c => zip.file(c.name, c.blob));
+  Object.entries(generated).forEach(([name, blob]) => zip.file(name, blob));
   const content = await zip.generateAsync({ type: 'blob' });
   const url = URL.createObjectURL(content);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'webp-images.zip';
+  a.download = 'favicon-set.zip';
   a.click();
 });
+
+document.getElementById('copySnippet').addEventListener('click', () => copyText(snippetOutput.textContent, 'Code'));
 </script>
 
 </body>

@@ -46,6 +46,8 @@
       <a href="color-palette-generator.html" class="">Color Palette Generator</a>
       <a href="hashtag-helper.html" class="">Hashtag Helper</a>
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
+      <a href="image-compressor.html" class="">Image Compressor (KB Target)</a>
+      <a href="favicon-generator.html" class="">Favicon Generator</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
     </div>
@@ -79,7 +81,7 @@
 
     <div class="panel">
       <h2>Type Your Text</h2>
-      <textarea id="bioInput" placeholder="e.g. Amila | Trader &amp; Blogger" maxlength="120"></textarea>
+      <textarea id="bioInput" placeholder="e.g. Alex | Creator &amp; Blogger" maxlength="120"></textarea>
       <div class="controls-row">
         <span id="bioCount" style="font-family: var(--font-mono); font-size:0.82rem; color: var(--slate);">0 / 120</span>
       </div>
@@ -150,6 +152,8 @@
         <a href="color-palette-generator.html">Color Palette Generator</a>
         <a href="hashtag-helper.html">Hashtag Helper</a>
         <a href="image-to-webp-converter.html">Image to WebP Converter</a>
+        <a href="image-compressor.html">Image Compressor (KB Target)</a>
+        <a href="favicon-generator.html">Favicon Generator</a>
         </div>
         <div>
           <h4>Company</h4>
@@ -276,7 +280,7 @@ const results = document.getElementById('fontResults');
 const counter = document.getElementById('bioCount');
 
 function render() {
-  const val = input.value || 'Amila';
+  const val = input.value || 'Alex';
   counter.textContent = (input.value.length) + ' / 120';
   results.innerHTML = '';
   STYLES.forEach(([label, fn]) => {

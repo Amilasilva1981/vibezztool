@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image to WebP Converter — Free Bulk JPG/PNG to WebP Tool (No Upload to Server)</title>
-<meta name="description" content="Convert JPG and PNG images to WebP in bulk to speed up your blog or website. Adjustable quality, ZIP download — images never leave your browser.">
-<link rel="canonical" href="https://vibezztool.com/image-to-webp-converter.html">
+<title>Image Compressor — Compress a Photo to an Exact KB Size, Free</title>
+<meta name="description" content="Compress a JPG or PNG image to an exact target file size — 20KB, 50KB, 100KB, 200KB, or any custom size — for job applications, forms, or faster web pages. Runs entirely in your browser, no upload to a server.">
+<link rel="canonical" href="https://vibezztool.com/image-compressor.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -45,8 +45,8 @@
       <a href="color-picker.html" class="">Color Picker</a>
       <a href="color-palette-generator.html" class="">Color Palette Generator</a>
       <a href="hashtag-helper.html" class="">Hashtag Helper</a>
-      <a href="image-to-webp-converter.html" class="current">Image to WebP Converter</a>
-      <a href="image-compressor.html" class="">Image Compressor (KB Target)</a>
+      <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
+      <a href="image-compressor.html" class="current">Image Compressor (KB Target)</a>
       <a href="favicon-generator.html" class="">Favicon Generator</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
@@ -74,26 +74,31 @@
 
   <main class="wrap">
     <section class="tool-hero">
-      <span class="stamp">IMAGE TOOL · 08</span>
-      <h1>Image to WebP Converter — Shrink Images for Blogs &amp; Websites</h1>
-      <p class="lede">Convert JPG, PNG, or GIF images to WebP in bulk and shrink file size without losing quality. Smaller images mean faster page loads and quicker uploads. Your images never leave your device — everything converts right in your browser.</p>
+      <span class="stamp">IMAGE TOOL · 09</span>
+      <h1>Image Compressor — Compress a Photo to an Exact KB Size</h1>
+      <p class="lede">Need a photo under 50KB for a job application, under 100KB for a form upload, or under 200KB for a website? Set your target size and this tool automatically finds the right quality and dimensions to hit it — right in your browser.</p>
     </section>
 
     <div class="panel">
       <div id="dropZone" style="border:2px dashed var(--line); border-radius: 12px; padding: 40px 20px; text-align:center; cursor:pointer; background: var(--paper);">
-        <p style="font-weight:600; margin:0 0 6px;">📁 Drag &amp; Drop Images Here, or Click to Browse</p>
-        <p style="font-size:0.82rem;color:var(--slate); margin:0;">JPG, PNG, GIF — upload as many images as you like at once</p>
+        <p style="font-weight:600; margin:0 0 6px;">📁 Drag &amp; Drop an Image Here, or Click to Browse</p>
+        <p style="font-size:0.82rem;color:var(--slate); margin:0;">JPG or PNG — you can upload more than one at a time</p>
         <input type="file" id="fileInput" accept="image/*" multiple style="display:none;">
       </div>
 
       <div style="margin-top:18px;">
-        <label for="quality">WebP Quality: <span id="qualityVal">80</span>%</label>
-        <input type="range" id="quality" min="10" max="100" value="80">
-        <p style="font-size:0.78rem;color:var(--slate);">Higher quality = larger file size. 75-85% is the best balance for most blog images.</p>
+        <label for="targetKB">Target Size (KB)</label>
+        <input type="number" id="targetKB" value="100" min="5" max="5000">
+        <div class="controls-row">
+          <button class="btn btn-outline" data-kb="20">20 KB</button>
+          <button class="btn btn-outline" data-kb="50">50 KB</button>
+          <button class="btn btn-outline" data-kb="100">100 KB</button>
+          <button class="btn btn-outline" data-kb="200">200 KB</button>
+        </div>
       </div>
 
       <div class="controls-row">
-        <button class="btn btn-cta" id="convertBtn" disabled>⚡ Convert to WebP</button>
+        <button class="btn btn-cta" id="compressBtn" disabled>⚡ Compress to Target Size</button>
         <button class="btn btn-outline" id="downloadZip" disabled>⬇️ Download All (.zip)</button>
       </div>
 
@@ -101,7 +106,7 @@
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
-      <p class="hint">Adding this image to a blog post? Check your alt text and keyword density with the Word Counter.</p>
+      <p class="hint">Need a specific format instead? Try the Image to WebP Converter.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
@@ -185,16 +190,17 @@
 <script>
 const dropZone = document.getElementById('dropZone');
 const fileInput = document.getElementById('fileInput');
-const convertBtn = document.getElementById('convertBtn');
+const compressBtn = document.getElementById('compressBtn');
 const downloadZip = document.getElementById('downloadZip');
 const resultsList = document.getElementById('resultsList');
-const qualitySlider = document.getElementById('quality');
-const qualityVal = document.getElementById('qualityVal');
+const targetInput = document.getElementById('targetKB');
 
 let files = [];
 let converted = [];
 
-qualitySlider.addEventListener('input', () => qualityVal.textContent = qualitySlider.value);
+document.querySelectorAll('[data-kb]').forEach(btn => {
+  btn.addEventListener('click', () => { targetInput.value = btn.dataset.kb; });
+});
 
 dropZone.addEventListener('click', () => fileInput.click());
 dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--marker)'; });
@@ -208,67 +214,102 @@ fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
 
 function handleFiles(fileListRaw) {
   files = Array.from(fileListRaw).filter(f => f.type.startsWith('image/'));
-  convertBtn.disabled = files.length === 0;
+  compressBtn.disabled = files.length === 0;
   resultsList.innerHTML = '';
   downloadZip.disabled = true;
   if (files.length) {
-    dropZone.querySelector('p').textContent = `📁 ${files.length} image(s) selected — click Convert`;
+    dropZone.querySelector('p').textContent = `📁 ${files.length} image(s) selected — click Compress`;
   }
 }
 
 function fmtSize(bytes) {
   if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
-  return (bytes/1024/1024).toFixed(2) + ' MB';
+  return (bytes / 1024).toFixed(1) + ' KB';
 }
 
-function convertOne(file, quality) {
+function loadImage(file) {
   return new Promise((resolve) => {
     const img = new Image();
     const reader = new FileReader();
     reader.onload = (e) => { img.src = e.target.result; };
+    img.onload = () => resolve(img);
     reader.readAsDataURL(file);
-    img.onload = () => {
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0);
-      canvas.toBlob((blob) => {
-        resolve({ name: file.name.replace(/\.[^.]+$/, '') + '.webp', originalSize: file.size, blob });
-      }, 'image/webp', quality / 100);
-    };
   });
 }
 
-convertBtn.addEventListener('click', async () => {
-  const quality = parseInt(qualitySlider.value, 10);
-  convertBtn.disabled = true;
-  convertBtn.textContent = 'Converting...';
+function canvasToBlob(canvas, quality) {
+  return new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', quality));
+}
+
+async function compressToTarget(file, targetBytes) {
+  const img = await loadImage(file);
+  let scale = 1.0;
+  let best = null;
+
+  while (scale >= 0.15) {
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(img.width * scale);
+    canvas.height = Math.round(img.height * scale);
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    let lo = 0.05, hi = 0.95;
+    for (let i = 0; i < 7; i++) {
+      const mid = (lo + hi) / 2;
+      const blob = await canvasToBlob(canvas, mid);
+      if (blob.size <= targetBytes) {
+        best = { blob, scale, quality: mid };
+        lo = mid;
+      } else {
+        hi = mid;
+      }
+    }
+    if (best) return best;
+    scale -= 0.15;
+  }
+
+  // could not hit target even at lowest scale/quality — return smallest attempt
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.round(img.width * 0.15);
+  canvas.height = Math.round(img.height * 0.15);
+  const ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  const blob = await canvasToBlob(canvas, 0.05);
+  return { blob, scale: 0.15, quality: 0.05 };
+}
+
+compressBtn.addEventListener('click', async () => {
+  const targetKB = parseInt(targetInput.value, 10) || 100;
+  const targetBytes = targetKB * 1024;
+  compressBtn.disabled = true;
+  compressBtn.textContent = 'Compressing...';
   resultsList.innerHTML = '';
   converted = [];
+
   for (const file of files) {
-    const result = await convertOne(file, quality);
-    converted.push(result);
-    const saved = (100 - (result.blob.size / result.originalSize * 100)).toFixed(0);
+    const result = await compressToTarget(file, targetBytes);
+    const name = file.name.replace(/\.[^.]+$/, '') + '-compressed.jpg';
+    converted.push({ name, blob: result.blob });
     const url = URL.createObjectURL(result.blob);
+    const hitTarget = result.blob.size <= targetBytes;
     const row = document.createElement('div');
     row.className = 'result-row';
-    row.innerHTML = `<div><span class="tag">${result.name}</span>
-      <span class="val">${fmtSize(result.originalSize)} → ${fmtSize(result.blob.size)}
-      <span style="color:${saved > 0 ? '#3C9D5B' : 'var(--marker)'}">(${saved > 0 ? '-' + saved + '%' : saved + '%'})</span></span></div>`;
+    row.innerHTML = `<div><span class="tag">${name}</span>
+      <span class="val">${fmtSize(file.size)} → ${fmtSize(result.blob.size)}
+      <span style="color:${hitTarget ? '#3C9D5B' : 'var(--marker)'}">${hitTarget ? '✓ target reached' : '(closest possible)'}</span></span></div>`;
     const dl = document.createElement('a');
     dl.className = 'btn btn-copy';
     dl.textContent = 'Download';
     dl.href = url;
-    dl.download = result.name;
+    dl.download = name;
     row.appendChild(dl);
     resultsList.appendChild(row);
   }
-  convertBtn.disabled = false;
-  convertBtn.textContent = '⚡ Convert to WebP';
+
+  compressBtn.disabled = false;
+  compressBtn.textContent = '⚡ Compress to Target Size';
   downloadZip.disabled = converted.length === 0;
-  showToast('Converted ✓');
+  showToast('Compressed ✓');
 });
 
 downloadZip.addEventListener('click', async () => {
@@ -278,7 +319,7 @@ downloadZip.addEventListener('click', async () => {
   const url = URL.createObjectURL(content);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'webp-images.zip';
+  a.download = 'compressed-images.zip';
   a.click();
 });
 </script>
