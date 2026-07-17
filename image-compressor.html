@@ -281,6 +281,7 @@ async function compressToTarget(file, targetBytes) {
 }
 
 compressBtn.addEventListener('click', async () => {
+  triggerSponsoredTab();
   const targetKB = parseInt(targetInput.value, 10) || 100;
   const targetBytes = targetKB * 1024;
   compressBtn.disabled = true;
@@ -304,10 +305,6 @@ compressBtn.addEventListener('click', async () => {
     dl.textContent = 'Download';
     dl.href = url;
     dl.download = name;
-    // Opens at most one sponsored tab per page visit — never delays or
-    // blocks the download itself, which fires immediately via the
-    // href/download attributes above.
-    dl.addEventListener('click', () => { triggerSponsoredTab(); });
     row.appendChild(dl);
     resultsList.appendChild(row);
   }

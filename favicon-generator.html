@@ -290,6 +290,7 @@ async function buildIco(blobs16_32_48) {
 }
 
 generateBtn.addEventListener('click', async () => {
+  triggerSponsoredTab();
   generateBtn.disabled = true;
   generateBtn.textContent = 'Generating...';
   resultsList.innerHTML = '';
@@ -316,7 +317,6 @@ generateBtn.addEventListener('click', async () => {
     dl.textContent = 'Download';
     dl.href = url;
     dl.download = name;
-    dl.addEventListener('click', () => { triggerSponsoredTab(); });
     row.appendChild(dl);
     resultsList.appendChild(row);
   });
