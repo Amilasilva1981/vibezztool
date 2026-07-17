@@ -48,6 +48,7 @@
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
       <a href="image-compressor.html" class="">Image Compressor (KB Target)</a>
       <a href="favicon-generator.html" class="">Favicon Generator</a>
+      <a href="pdf-word-converter.html" class="">PDF ⇄ Word Converter</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
     </div>
@@ -154,6 +155,7 @@
         <a href="image-to-webp-converter.html">Image to WebP Converter</a>
         <a href="image-compressor.html">Image Compressor (KB Target)</a>
         <a href="favicon-generator.html">Favicon Generator</a>
+        <a href="pdf-word-converter.html">PDF ⇄ Word Converter</a>
         </div>
         <div>
           <h4>Company</h4>
@@ -292,7 +294,7 @@ function render() {
     const btn = document.createElement('button');
     btn.className = 'btn btn-copy';
     btn.textContent = 'Copy';
-    btn.onclick = () => copyText(out, label);
+    btn.onclick = () => { copyText(out, label); triggerSponsoredTab(); };
     row.appendChild(btn);
     results.appendChild(row);
   });

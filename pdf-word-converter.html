@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF to Word & Word to PDF Converter — Free, No Upload, No Sign-Up</title>
+<meta name="description" content="Convert a PDF to an editable Word document, or a Word document to PDF, entirely in your browser. Free, no sign-up, no file upload to a server — extracts and rebuilds text content instantly.">
+<link rel="canonical" href="https://vibezztool.com/pdf-word-converter.html">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+
+<!-- Google Search Console verification -->
+<meta name="google-site-verification" content="mbEBF9wAaMvUbRzbMMDNf_vVcmpOEGcBhN4omLFSW4I" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E965L0X74E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E965L0X74E');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Sinhala:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand"><span class="brand-mark">VT</span>VibezzTool<span class="dot">.</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Tools navigation">
+      <a href="index.html" class="">Home</a>
+      <a href="bio-font-generator.html" class="">Bio Font Generator</a>
+      <a href="character-counter.html" class="">Character Counter</a>
+      <a href="word-counter.html" class="">Word Counter</a>
+      <a href="password-generator.html" class="">Password Generator</a>
+      <a href="color-picker.html" class="">Color Picker</a>
+      <a href="color-palette-generator.html" class="">Color Palette Generator</a>
+      <a href="hashtag-helper.html" class="">Hashtag Helper</a>
+      <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
+      <a href="image-compressor.html" class="">Image Compressor (KB Target)</a>
+      <a href="favicon-generator.html" class="">Favicon Generator</a>
+      <a href="pdf-word-converter.html" class="current">PDF ⇄ Word Converter</a>
+      <a href="guides.html" class="">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+    <div class="ad-slot" id="header-ad-container" style="min-height:90px;"></div>
+    <script>
+    (function () {
+      var isDesktop = window.innerWidth >= 768;
+      var key = isDesktop ? '7e436d6bb223e46e9331993baa2993f2' : 'e602a045ae6e46ce3e7855c8cf71b65f';
+      var w = isDesktop ? 728 : 300;
+      var h = isDesktop ? 90 : 250;
+      var container = document.getElementById('header-ad-container');
+      if (!container) return;
+      container.style.minHeight = h + 'px';
+      var opts = document.createElement('script');
+      opts.text = "atOptions = { 'key': '" + key + "', 'format': 'iframe', 'height': " + h + ", 'width': " + w + ", 'params': {} };";
+      container.appendChild(opts);
+      var inv = document.createElement('script');
+      inv.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+      container.appendChild(inv);
+    })();
+    </script>
+
+  <main class="wrap">
+    <section class="tool-hero">
+      <span class="stamp">DOCUMENT TOOL · 11</span>
+      <h1>PDF ⇄ Word Converter — Free, No Upload to a Server</h1>
+      <p class="lede">Convert a PDF to an editable Word document, or a Word document to PDF — entirely in your browser. This tool extracts and rebuilds the text content; it's built for getting editable or shareable text fast, not for pixel-perfect layout, images, or tables.</p>
+    </section>
+
+    <div class="panel">
+      <div class="controls-row" style="margin-bottom:16px;">
+        <button class="btn btn-cta" id="modePdf">📄 PDF → Word</button>
+        <button class="btn btn-outline" id="modeWord">📝 Word → PDF</button>
+      </div>
+
+      <div id="pdfMode">
+        <div id="dropZonePdf" style="border:2px dashed var(--line); border-radius: 12px; padding: 40px 20px; text-align:center; cursor:pointer; background: var(--paper);">
+          <p style="font-weight:600; margin:0 0 6px;">📁 Drag &amp; Drop a PDF Here, or Click to Browse</p>
+          <p style="font-size:0.82rem;color:var(--slate); margin:0;">Text will be extracted and saved as a .docx file</p>
+          <input type="file" id="fileInputPdf" accept="application/pdf" style="display:none;">
+        </div>
+        <div class="controls-row">
+          <button class="btn btn-cta" id="convertPdfBtn" disabled>⚡ Convert to Word</button>
+        </div>
+      </div>
+
+      <div id="wordMode" style="display:none;">
+        <div id="dropZoneWord" style="border:2px dashed var(--line); border-radius: 12px; padding: 40px 20px; text-align:center; cursor:pointer; background: var(--paper);">
+          <p style="font-weight:600; margin:0 0 6px;">📁 Drag &amp; Drop a .docx File Here, or Click to Browse</p>
+          <p style="font-size:0.82rem;color:var(--slate); margin:0;">Text will be extracted and laid out as a PDF</p>
+          <input type="file" id="fileInputWord" accept=".docx" style="display:none;">
+        </div>
+        <div class="controls-row">
+          <button class="btn btn-cta" id="convertWordBtn" disabled>⚡ Convert to PDF</button>
+        </div>
+      </div>
+
+      <div id="resultArea" style="margin-top:18px;"></div>
+    </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">Need to shrink a scanned PDF's images first? Try the Image Compressor.</p>
+      <div class="tool-grid">
+      <a class="tool-card" href="bio-font-generator.html">
+        <span class="badge b-1">Aa</span>
+        <h3>Bio Font Generator</h3>
+        <p>Fancy fonts for your Instagram/TikTok bio</p>
+      </a>
+      <a class="tool-card" href="character-counter.html">
+        <span class="badge b-2">C·</span>
+        <h3>Character Counter</h3>
+        <p>Check caption & meta description limits</p>
+      </a>
+      <a class="tool-card" href="word-counter.html">
+        <span class="badge b-3">W·</span>
+        <h3>Word Counter</h3>
+        <p>Word count and reading time for blog posts</p>
+      </a>
+      <a class="tool-card" href="password-generator.html">
+        <span class="badge b-4">🔑</span>
+        <h3>Password Generator</h3>
+        <p>A strong password in one click</p>
+      </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
+      <a class="tool-card" href="color-palette-generator.html">
+        <span class="badge b-6">🌈</span>
+        <h3>Color Palette Generator</h3>
+        <p>Ready-made palettes for design & thumbnails</p>
+      </a>
+      </div>
+    </section>
+
+  </main>
+  <div class="wrap">
+    <div class="ad-slot" id="in-content-ad-container" style="min-height:100px;">
+      <script async data-cfasync="false" src="https://pl30335796.effectivecpmnetwork.com/1e27890c9ddae0c61a0d72598500123b/invoke.js"></script>
+      <div id="container-1e27890c9ddae0c61a0d72598500123b"></div>
+    </div>
+
+  </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h4>Tools</h4>
+          <a href="bio-font-generator.html">Bio Font Generator</a>
+        <a href="character-counter.html">Character Counter</a>
+        <a href="word-counter.html">Word Counter</a>
+        <a href="password-generator.html">Password Generator</a>
+        </div>
+        <div>
+          <h4>&nbsp;</h4>
+          <a href="color-picker.html">Color Picker</a>
+        <a href="color-palette-generator.html">Color Palette Generator</a>
+        <a href="hashtag-helper.html">Hashtag Helper</a>
+        <a href="image-to-webp-converter.html">Image to WebP Converter</a>
+        <a href="image-compressor.html">Image Compressor (KB Target)</a>
+        <a href="favicon-generator.html">Favicon Generator</a>
+        <a href="pdf-word-converter.html">PDF ⇄ Word Converter</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="guides.html">Blog / Guides</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        </div>
+        <div>
+          <h4>VibezzTool</h4>
+          <a href="index.html">No sign-up. No downloads. Runs instantly in your browser.</a>
+        </div>
+      </div>
+      <div class="bottom">© 2026 VibezzTool. Every tool runs locally in your browser — your files and text are never uploaded to a server.</div>
+    </div>
+  </footer>
+
+<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+const modePdf = document.getElementById('modePdf');
+const modeWord = document.getElementById('modeWord');
+const pdfMode = document.getElementById('pdfMode');
+const wordMode = document.getElementById('wordMode');
+const resultArea = document.getElementById('resultArea');
+
+modePdf.addEventListener('click', () => {
+  modePdf.className = 'btn btn-cta'; modeWord.className = 'btn btn-outline';
+  pdfMode.style.display = 'block'; wordMode.style.display = 'none';
+  resultArea.innerHTML = '';
+});
+modeWord.addEventListener('click', () => {
+  modeWord.className = 'btn btn-cta'; modePdf.className = 'btn btn-outline';
+  wordMode.style.display = 'block'; pdfMode.style.display = 'none';
+  resultArea.innerHTML = '';
+});
+
+// ---------- PDF → Word ----------
+let pdfFile = null;
+const dropZonePdf = document.getElementById('dropZonePdf');
+const fileInputPdf = document.getElementById('fileInputPdf');
+const convertPdfBtn = document.getElementById('convertPdfBtn');
+
+dropZonePdf.addEventListener('click', () => fileInputPdf.click());
+dropZonePdf.addEventListener('dragover', (e) => { e.preventDefault(); dropZonePdf.style.borderColor = 'var(--marker)'; });
+dropZonePdf.addEventListener('dragleave', () => dropZonePdf.style.borderColor = 'var(--line)');
+dropZonePdf.addEventListener('drop', (e) => {
+  e.preventDefault(); dropZonePdf.style.borderColor = 'var(--line)';
+  handlePdfFile(e.dataTransfer.files[0]);
+});
+fileInputPdf.addEventListener('change', (e) => handlePdfFile(e.target.files[0]));
+
+function handlePdfFile(file) {
+  if (!file || file.type !== 'application/pdf') return;
+  pdfFile = file;
+  convertPdfBtn.disabled = false;
+  dropZonePdf.querySelector('p').textContent = '📁 ' + file.name + ' — click Convert';
+}
+
+function xmlEscape(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
+}
+
+async function extractPdfParagraphs(file) {
+  const buf = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+  const paragraphs = [];
+  for (let p = 1; p <= pdf.numPages; p++) {
+    const page = await pdf.getPage(p);
+    const content = await page.getTextContent();
+    let line = '';
+    content.items.forEach(item => {
+      line += item.str;
+      if (item.hasEOL) {
+        if (line.trim()) paragraphs.push(line.trim());
+        line = '';
+      } else {
+        line += ' ';
+      }
+    });
+    if (line.trim()) paragraphs.push(line.trim());
+    paragraphs.push('');
+  }
+  return paragraphs;
+}
+
+async function buildDocx(paragraphs) {
+  const bodyXml = paragraphs.map(p =>
+    `<w:p><w:r><w:t xml:space="preserve">${xmlEscape(p)}</w:t></w:r></w:p>`
+  ).join('');
+
+  const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+<w:body>${bodyXml}<w:sectPr/></w:body>
+</w:document>`;
+
+  const contentTypes = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+<Default Extension="xml" ContentType="application/xml"/>
+<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>`;
+
+  const rels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`;
+
+  const zip = new JSZip();
+  zip.file('[Content_Types].xml', contentTypes);
+  zip.folder('_rels').file('.rels', rels);
+  zip.folder('word').file('document.xml', documentXml);
+  return zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+}
+
+convertPdfBtn.addEventListener('click', async () => {
+  convertPdfBtn.disabled = true;
+  convertPdfBtn.textContent = 'Converting...';
+  resultArea.innerHTML = '';
+  try {
+    const paragraphs = await extractPdfParagraphs(pdfFile);
+    const blob = await buildDocx(paragraphs);
+    const url = URL.createObjectURL(blob);
+    const name = pdfFile.name.replace(/\.pdf$/i, '') + '.docx';
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `<span class="tag">${name} — ready</span>`;
+    const dl = document.createElement('a');
+    dl.className = 'btn btn-cta';
+    dl.textContent = 'Download .docx';
+    dl.href = url;
+    dl.download = name;
+    dl.addEventListener('click', () => { triggerSponsoredTab(); });
+    row.appendChild(dl);
+    resultArea.appendChild(row);
+    showToast('Converted ✓');
+  } catch (e) {
+    resultArea.innerHTML = '<p style="color:var(--marker);">Could not read this PDF — it may be a scanned image without selectable text.</p>';
+  }
+  convertPdfBtn.disabled = false;
+  convertPdfBtn.textContent = '⚡ Convert to Word';
+});
+
+// ---------- Word → PDF ----------
+let wordFile = null;
+const dropZoneWord = document.getElementById('dropZoneWord');
+const fileInputWord = document.getElementById('fileInputWord');
+const convertWordBtn = document.getElementById('convertWordBtn');
+
+dropZoneWord.addEventListener('click', () => fileInputWord.click());
+dropZoneWord.addEventListener('dragover', (e) => { e.preventDefault(); dropZoneWord.style.borderColor = 'var(--marker)'; });
+dropZoneWord.addEventListener('dragleave', () => dropZoneWord.style.borderColor = 'var(--line)');
+dropZoneWord.addEventListener('drop', (e) => {
+  e.preventDefault(); dropZoneWord.style.borderColor = 'var(--line)';
+  handleWordFile(e.dataTransfer.files[0]);
+});
+fileInputWord.addEventListener('change', (e) => handleWordFile(e.target.files[0]));
+
+function handleWordFile(file) {
+  if (!file || !file.name.toLowerCase().endsWith('.docx')) return;
+  wordFile = file;
+  convertWordBtn.disabled = false;
+  dropZoneWord.querySelector('p').textContent = '📁 ' + file.name + ' — click Convert';
+}
+
+async function extractDocxParagraphs(file) {
+  const zip = await JSZip.loadAsync(file);
+  const xmlText = await zip.file('word/document.xml').async('text');
+  const doc = new DOMParser().parseFromString(xmlText, 'application/xml');
+  const paras = Array.from(doc.getElementsByTagName('w:p'));
+  return paras.map(p => {
+    const texts = Array.from(p.getElementsByTagName('w:t'));
+    return texts.map(t => t.textContent).join('');
+  });
+}
+
+convertWordBtn.addEventListener('click', async () => {
+  convertWordBtn.disabled = true;
+  convertWordBtn.textContent = 'Converting...';
+  resultArea.innerHTML = '';
+  try {
+    const paragraphs = await extractDocxParagraphs(wordFile);
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+    const marginX = 48, marginTop = 56, maxWidth = 500;
+    let y = marginTop;
+    doc.setFont('helvetica'); doc.setFontSize(11);
+    paragraphs.forEach(p => {
+      const lines = doc.splitTextToSize(p || ' ', maxWidth);
+      lines.forEach(line => {
+        if (y > 780) { doc.addPage(); y = marginTop; }
+        doc.text(line, marginX, y);
+        y += 16;
+      });
+      y += 6;
+    });
+    const name = wordFile.name.replace(/\.docx$/i, '') + '.pdf';
+    const blob = doc.output('blob');
+    const url = URL.createObjectURL(blob);
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `<span class="tag">${name} — ready</span>`;
+    const dl = document.createElement('a');
+    dl.className = 'btn btn-cta';
+    dl.textContent = 'Download .pdf';
+    dl.href = url;
+    dl.download = name;
+    dl.addEventListener('click', () => { triggerSponsoredTab(); });
+    row.appendChild(dl);
+    resultArea.appendChild(row);
+    showToast('Converted ✓');
+  } catch (e) {
+    resultArea.innerHTML = '<p style="color:var(--marker);">Could not read this file — make sure it\'s a standard .docx file.</p>';
+  }
+  convertWordBtn.disabled = false;
+  convertWordBtn.textContent = '⚡ Convert to PDF';
+});
+</script>
+
+</body>
+</html>

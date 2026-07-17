@@ -48,6 +48,7 @@
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
       <a href="image-compressor.html" class="">Image Compressor (KB Target)</a>
       <a href="favicon-generator.html" class="">Favicon Generator</a>
+      <a href="pdf-word-converter.html" class="">PDF ⇄ Word Converter</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
     </div>
@@ -183,6 +184,7 @@
         <a href="image-to-webp-converter.html">Image to WebP Converter</a>
         <a href="image-compressor.html">Image Compressor (KB Target)</a>
         <a href="favicon-generator.html">Favicon Generator</a>
+        <a href="pdf-word-converter.html">PDF ⇄ Word Converter</a>
         </div>
         <div>
           <h4>Company</h4>
@@ -248,7 +250,7 @@ function renderCustom() {
   document.getElementById('customChars').textContent = text.length;
 }
 customInput.addEventListener('input', renderCustom);
-document.getElementById('copyCustom').addEventListener('click', () => copyText(customOutput.textContent, 'Hashtags'));
+document.getElementById('copyCustom').addEventListener('click', () => { copyText(customOutput.textContent, 'Hashtags'); triggerSponsoredTab(); });
 
 // ---------- Curated niche packs ----------
 const SETS = {
@@ -312,7 +314,7 @@ function render() {
   document.getElementById('tagChars').textContent = text.length;
 }
 select.addEventListener('change', render);
-document.getElementById('copyTags').addEventListener('click', () => copyText(output.textContent, 'Hashtags'));
+document.getElementById('copyTags').addEventListener('click', () => { copyText(output.textContent, 'Hashtags'); triggerSponsoredTab(); });
 render();
 </script>
 

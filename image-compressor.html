@@ -48,6 +48,7 @@
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
       <a href="image-compressor.html" class="current">Image Compressor (KB Target)</a>
       <a href="favicon-generator.html" class="">Favicon Generator</a>
+      <a href="pdf-word-converter.html" class="">PDF ⇄ Word Converter</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
     </div>
@@ -167,6 +168,7 @@
         <a href="image-to-webp-converter.html">Image to WebP Converter</a>
         <a href="image-compressor.html">Image Compressor (KB Target)</a>
         <a href="favicon-generator.html">Favicon Generator</a>
+        <a href="pdf-word-converter.html">PDF ⇄ Word Converter</a>
         </div>
         <div>
           <h4>Company</h4>
@@ -302,6 +304,10 @@ compressBtn.addEventListener('click', async () => {
     dl.textContent = 'Download';
     dl.href = url;
     dl.download = name;
+    // Opens at most one sponsored tab per page visit — never delays or
+    // blocks the download itself, which fires immediately via the
+    // href/download attributes above.
+    dl.addEventListener('click', () => { triggerSponsoredTab(); });
     row.appendChild(dl);
     resultsList.appendChild(row);
   }
@@ -313,6 +319,7 @@ compressBtn.addEventListener('click', async () => {
 });
 
 downloadZip.addEventListener('click', async () => {
+  triggerSponsoredTab();
   const zip = new JSZip();
   converted.forEach(c => zip.file(c.name, c.blob));
   const content = await zip.generateAsync({ type: 'blob' });

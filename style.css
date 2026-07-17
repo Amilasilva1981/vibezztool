@@ -424,6 +424,29 @@ label { font-size: 0.85rem; font-weight: 600; color: var(--ink); display: block;
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+.ad-notice {
+  position: fixed;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%) translateY(-20px);
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  padding: 12px 20px;
+  border-radius: 12px;
+  max-width: min(90vw, 420px);
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 1000;
+  border: 1.5px solid var(--highlight);
+  box-shadow: var(--shadow);
+}
+.ad-notice.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
 /* ---------- footer ---------- */
 .site-footer {
   background: var(--ink);

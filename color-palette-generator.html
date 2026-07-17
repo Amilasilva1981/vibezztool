@@ -48,6 +48,7 @@
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
       <a href="image-compressor.html" class="">Image Compressor (KB Target)</a>
       <a href="favicon-generator.html" class="">Favicon Generator</a>
+      <a href="pdf-word-converter.html" class="">PDF ⇄ Word Converter</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
     </div>
@@ -93,6 +94,13 @@
         <button class="btn btn-copy" id="copyAllBtn">Copy All HEX</button>
       </div>
       <p style="font-size:0.8rem;color:var(--slate);">Click the 🔒 lock icon to fix a color in place — it won't change the next time you generate.</p>
+    </div>
+    <div class="panel" style="border-color:var(--highlight);">
+      <span class="stamp" style="border-color:var(--slate);color:var(--slate);">sponsored recommendation</span>
+      <h2 style="margin-top:12px;">Turn This Palette Into a Finished Design</h2>
+      <p>Once you've picked your colors, Canva Pro makes it fast to drop them straight into a thumbnail, social post, or brand kit template.</p>
+      <a class="btn btn-cta" href="https://YOUR-CANVA-AFFILIATE-LINK-HERE" target="_blank" rel="sponsored noopener">Try Canva Pro →</a>
+      <p style="font-size:0.75rem;color:var(--slate);margin-top:12px;margin-bottom:0;">Disclosure: this is an affiliate link. If you sign up through it, we may earn a commission at no extra cost to you. We only recommend tools we'd genuinely suggest to creators.</p>
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
@@ -157,6 +165,7 @@
         <a href="image-to-webp-converter.html">Image to WebP Converter</a>
         <a href="image-compressor.html">Image Compressor (KB Target)</a>
         <a href="favicon-generator.html">Favicon Generator</a>
+        <a href="pdf-word-converter.html">PDF ⇄ Word Converter</a>
         </div>
         <div>
           <h4>Company</h4>
@@ -222,7 +231,7 @@ function render() {
     const lbl = document.createElement('div');
     lbl.className = 'hex-label';
     lbl.textContent = hex.toUpperCase();
-    lbl.onclick = () => copyText(hex.toUpperCase(), 'HEX');
+    lbl.onclick = () => { copyText(hex.toUpperCase(), 'HEX'); triggerSponsoredTab(); };
     sw.appendChild(lbl);
     strip.appendChild(sw);
   });
@@ -236,7 +245,7 @@ function generate() {
 
 document.getElementById('genBtn').addEventListener('click', generate);
 document.getElementById('schemeSelect').addEventListener('change', generate);
-document.getElementById('copyAllBtn').addEventListener('click', () => copyText(colors.map(c=>c.toUpperCase()).join(', '), 'Palette'));
+document.getElementById('copyAllBtn').addEventListener('click', () => { copyText(colors.map(c=>c.toUpperCase()).join(', '), 'Palette'); triggerSponsoredTab(); });
 document.addEventListener('keydown', (e) => { if (e.code === 'Space' && e.target.tagName !== 'SELECT') { e.preventDefault(); generate(); } });
 
 generate();
