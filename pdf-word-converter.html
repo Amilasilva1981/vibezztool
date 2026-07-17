@@ -108,6 +108,7 @@
         </div>
       </div>
 
+      <span class="sponsor-notice">⚠️ Your file/result is ready either way — you may also be taken to a sponsor page in this tab or a new one. No need to interact with it; just come back to VibezzTool.</span>
       <div id="resultArea" style="margin-top:18px;"></div>
     </div>
     <section class="cross-promo">
@@ -295,7 +296,6 @@ async function buildDocx(paragraphs) {
 }
 
 convertPdfBtn.addEventListener('click', async () => {
-  triggerSponsoredTab();
   convertPdfBtn.disabled = true;
   convertPdfBtn.textContent = 'Converting...';
   resultArea.innerHTML = '';
@@ -312,6 +312,7 @@ convertPdfBtn.addEventListener('click', async () => {
     dl.textContent = 'Download .docx';
     dl.href = url;
     dl.download = name;
+    dl.addEventListener('click', () => { triggerSponsoredTab(); });
     row.appendChild(dl);
     resultArea.appendChild(row);
     showToast('Converted ✓');
@@ -356,7 +357,6 @@ async function extractDocxParagraphs(file) {
 }
 
 convertWordBtn.addEventListener('click', async () => {
-  triggerSponsoredTab();
   convertWordBtn.disabled = true;
   convertWordBtn.textContent = 'Converting...';
   resultArea.innerHTML = '';
@@ -387,6 +387,7 @@ convertWordBtn.addEventListener('click', async () => {
     dl.textContent = 'Download .pdf';
     dl.href = url;
     dl.download = name;
+    dl.addEventListener('click', () => { triggerSponsoredTab(); });
     row.appendChild(dl);
     resultArea.appendChild(row);
     showToast('Converted ✓');

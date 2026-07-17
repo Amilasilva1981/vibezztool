@@ -102,6 +102,7 @@
         <button class="btn btn-cta" id="compressBtn" disabled>⚡ Compress to Target Size</button>
         <button class="btn btn-outline" id="downloadZip" disabled>⬇️ Download All (.zip)</button>
       </div>
+      <span class="sponsor-notice">⚠️ Your file/result is ready either way — you may also be taken to a sponsor page in this tab or a new one. No need to interact with it; just come back to VibezzTool.</span>
 
       <div id="resultsList" style="margin-top:18px;"></div>
     </div>
@@ -281,7 +282,6 @@ async function compressToTarget(file, targetBytes) {
 }
 
 compressBtn.addEventListener('click', async () => {
-  triggerSponsoredTab();
   const targetKB = parseInt(targetInput.value, 10) || 100;
   const targetBytes = targetKB * 1024;
   compressBtn.disabled = true;
@@ -305,6 +305,7 @@ compressBtn.addEventListener('click', async () => {
     dl.textContent = 'Download';
     dl.href = url;
     dl.download = name;
+    dl.addEventListener('click', () => { triggerSponsoredTab(); });
     row.appendChild(dl);
     resultsList.appendChild(row);
   }

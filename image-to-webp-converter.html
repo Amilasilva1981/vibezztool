@@ -97,6 +97,7 @@
         <button class="btn btn-cta" id="convertBtn" disabled>⚡ Convert to WebP</button>
         <button class="btn btn-outline" id="downloadZip" disabled>⬇️ Download All (.zip)</button>
       </div>
+      <span class="sponsor-notice">⚠️ Your file/result is ready either way — you may also be taken to a sponsor page in this tab or a new one. No need to interact with it; just come back to VibezzTool.</span>
 
       <div id="resultsList" style="margin-top:18px;"></div>
     </div>
@@ -244,7 +245,6 @@ function convertOne(file, quality) {
 }
 
 convertBtn.addEventListener('click', async () => {
-  triggerSponsoredTab();
   const quality = parseInt(qualitySlider.value, 10);
   convertBtn.disabled = true;
   convertBtn.textContent = 'Converting...';
@@ -265,6 +265,7 @@ convertBtn.addEventListener('click', async () => {
     dl.textContent = 'Download';
     dl.href = url;
     dl.download = result.name;
+    dl.addEventListener('click', () => { triggerSponsoredTab(); });
     row.appendChild(dl);
     resultsList.appendChild(row);
   }

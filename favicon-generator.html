@@ -97,6 +97,7 @@
         <button class="btn btn-cta" id="generateBtn" disabled>⚡ Generate Favicon Set</button>
         <button class="btn btn-outline" id="downloadZip" disabled>⬇️ Download All (.zip + .ico)</button>
       </div>
+      <span class="sponsor-notice">⚠️ Your file/result is ready either way — you may also be taken to a sponsor page in this tab or a new one. No need to interact with it; just come back to VibezzTool.</span>
 
       <div id="resultsList" style="margin-top:18px;"></div>
 
@@ -290,7 +291,6 @@ async function buildIco(blobs16_32_48) {
 }
 
 generateBtn.addEventListener('click', async () => {
-  triggerSponsoredTab();
   generateBtn.disabled = true;
   generateBtn.textContent = 'Generating...';
   resultsList.innerHTML = '';
@@ -317,6 +317,7 @@ generateBtn.addEventListener('click', async () => {
     dl.textContent = 'Download';
     dl.href = url;
     dl.download = name;
+    dl.addEventListener('click', () => { triggerSponsoredTab(); });
     row.appendChild(dl);
     resultsList.appendChild(row);
   });

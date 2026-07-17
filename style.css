@@ -447,6 +447,15 @@ label { font-size: 0.85rem; font-weight: 600; color: var(--ink); display: block;
 }
 .ad-notice.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+.sponsor-notice {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--slate);
+  margin-top: 8px;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
 /* ---------- footer ---------- */
 .site-footer {
   background: var(--ink);
