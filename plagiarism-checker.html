@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Color Picker — Free HEX, RGB, HSL Color Code Tool</title>
-<meta name="description" content="Get HEX, RGB, and HSL color codes instantly for design, thumbnail, or logo work. Pick a color straight from your screen — 100% free.">
-<link rel="canonical" href="https://vibezztool.com/color-picker.html">
+<title>Plagiarism Checker — Free Search Assistant for Writers & Students</title>
+<meta name="description" content="Paste up to 500 words and get one-click Google searches for distinctive phrases in your text, to quickly spot-check for duplicated wording elsewhere online. Honest, free, no fake originality score.">
+<link rel="canonical" href="https://vibezztool.com/plagiarism-checker.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -42,7 +42,7 @@
       <a href="character-counter.html" class="">Character Counter</a>
       <a href="word-counter.html" class="">Word Counter</a>
       <a href="password-generator.html" class="">Password Generator</a>
-      <a href="color-picker.html" class="current">Color Picker</a>
+      <a href="color-picker.html" class="">Color Picker</a>
       <a href="color-palette-generator.html" class="">Color Palette Generator</a>
       <a href="hashtag-helper.html" class="">Hashtag Helper</a>
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
@@ -50,7 +50,7 @@
       <a href="favicon-generator.html" class="">Favicon Generator</a>
       <a href="pdf-word-converter.html" class="">PDF ⇄ Word Converter</a>
       <a href="pdf-toolkit.html" class="">PDF Toolkit</a>
-      <a href="plagiarism-checker.html" class="">Plagiarism Checker</a>
+      <a href="plagiarism-checker.html" class="current">Plagiarism Checker</a>
       <a href="qr-code-generator.html" class="">QR Code Generator</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
@@ -78,31 +78,30 @@
 
   <main class="wrap">
     <section class="tool-hero">
-      <span class="stamp">DESIGN TOOL · 05</span>
-      <h1>Color Picker — Get HEX / RGB / HSL Codes Instantly</h1>
-      <p class="lede">Pick a color code for a thumbnail, logo, or poster right here. Copy it in HEX, RGB, or HSL format — whichever you need.</p>
+      <span class="stamp">TEXT TOOL · 13</span>
+      <h1>Plagiarism Checker — Free Search Assistant</h1>
+      <p class="lede">Paste up to 500 words. This tool pulls out distinctive phrases from your text and gives you one-click Google searches for each — so you can quickly see whether that exact wording appears anywhere else online. It's an honest search assistant, not a paid database like Turnitin — we won't pretend to show you a fake "originality score" with no real check behind it.</p>
     </section>
 
     <div class="panel">
-      <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
-        <input type="color" id="cpInput" value="#EF6461" style="width:90px; height:90px; border:none; border-radius:14px; cursor:pointer; padding:0;">
-        <div>
-          <button class="btn btn-accent" id="cpEyedrop">🎯 Pick a Color From Your Screen</button>
-          <p style="font-size:0.78rem;color:var(--slate);margin-top:8px;">(Only works on Chrome/Edge browsers)</p>
-        </div>
+      <label for="plagInput">Paste your text (up to 500 words)</label>
+      <textarea id="plagInput" placeholder="Paste an essay, article, or any text you want to spot-check..." style="min-height:180px;"></textarea>
+      <div class="controls-row">
+        <span id="plagWordCount" style="font-family: var(--font-mono); font-size:0.82rem; color: var(--slate);">0 / 500 words</span>
       </div>
-
+      <div class="controls-row">
+        <button class="btn btn-cta" id="plagCheckBtn">🔍 Generate Search Checks</button>
+      </div>
       <span class="sponsor-notice">⚡ After you press this button, your file will download (or you'll get your result) — and at the same time, you may be taken to a sponsor page. No need to interact with it — just come back to VibezzTool.</span>
-      <div id="cpResults" style="margin-top:20px;"></div>
     </div>
 
     <div class="panel">
-      <h2>Recently Picked Colors</h2>
-      <div id="cpHistory" class="swatch-strip"></div>
+      <h2>Phrases to Check</h2>
+      <div id="plagResults" style="color:var(--slate);font-size:0.9rem;">Paste text above and click "Generate Search Checks."</div>
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
-      <p class="hint">Need a full matching palette? Try the Color Palette Generator.</p>
+      <p class="hint">Also check your word count and reading time with the Word Counter.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
@@ -124,15 +123,15 @@
         <h3>Password Generator</h3>
         <p>A strong password in one click</p>
       </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
       <a class="tool-card" href="color-palette-generator.html">
         <span class="badge b-6">🌈</span>
         <h3>Color Palette Generator</h3>
         <p>Ready-made palettes for design & thumbnails</p>
-      </a>
-      <a class="tool-card" href="hashtag-helper.html">
-        <span class="badge b-7">#</span>
-        <h3>Hashtag Helper</h3>
-        <p>Curated hashtag sets by niche</p>
       </a>
       </div>
     </section>
@@ -187,86 +186,71 @@
 
 <script src="app.js"></script>
 <script>
-const input = document.getElementById('cpInput');
-const results = document.getElementById('cpResults');
-const historyEl = document.getElementById('cpHistory');
-let history = [];
+const plagInput = document.getElementById('plagInput');
+const plagWordCount = document.getElementById('plagWordCount');
+const plagResults = document.getElementById('plagResults');
+const plagCheckBtn = document.getElementById('plagCheckBtn');
 
-function hexToRgb(hex) {
-  const bigint = parseInt(hex.slice(1), 16);
-  return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
-}
-function rgbToHsl(r, g, b) {
-  r/=255; g/=255; b/=255;
-  const max = Math.max(r,g,b), min = Math.min(r,g,b);
-  let h, s, l = (max+min)/2;
-  if (max === min) { h = s = 0; }
-  else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
-    }
-    h /= 6;
+plagInput.addEventListener('input', () => {
+  const words = plagInput.value.trim() ? plagInput.value.trim().split(/\s+/) : [];
+  plagWordCount.textContent = words.length + ' / 500 words';
+  if (words.length > 500) {
+    plagWordCount.style.color = 'var(--marker)';
+  } else {
+    plagWordCount.style.color = 'var(--slate)';
   }
-  return [Math.round(h*360), Math.round(s*100), Math.round(l*100)];
-}
-
-function render() {
-  const hex = input.value;
-  const [r,g,b] = hexToRgb(hex);
-  const [h,s,l] = rgbToHsl(r,g,b);
-  const formats = [
-    ['HEX', hex.toUpperCase()],
-    ['RGB', `rgb(${r}, ${g}, ${b})`],
-    ['HSL', `hsl(${h}, ${s}%, ${l}%)`]
-  ];
-  results.innerHTML = '';
-  formats.forEach(([label, val]) => {
-    const row = document.createElement('div');
-    row.className = 'result-row';
-    row.innerHTML = `<div><span class="tag">${label}</span><span class="val">${val}</span></div>`;
-    const btn = document.createElement('button');
-    btn.className = 'btn btn-copy';
-    btn.textContent = 'Copy';
-    btn.onclick = () => { copyText(val, label); triggerSponsoredTab(); };
-    row.appendChild(btn);
-    results.appendChild(row);
-  });
-}
-
-function pushHistory(hex) {
-  history = [hex, ...history.filter(h => h !== hex)].slice(0, 8);
-  historyEl.innerHTML = '';
-  history.forEach(hx => {
-    const sw = document.createElement('div');
-    sw.className = 'swatch';
-    sw.style.background = hx;
-    const lbl = document.createElement('div');
-    lbl.className = 'hex-label';
-    lbl.textContent = hx.toUpperCase();
-    lbl.onclick = () => { copyText(hx.toUpperCase(), 'HEX'); triggerSponsoredTab(); };
-    sw.appendChild(lbl);
-    historyEl.appendChild(sw);
-  });
-}
-
-input.addEventListener('input', () => { render(); pushHistory(input.value); });
-document.getElementById('cpEyedrop').addEventListener('click', async () => {
-  if (!window.EyeDropper) { showToast("Your browser does not support this feature"); return; }
-  try {
-    const ed = new EyeDropper();
-    const result = await ed.open();
-    input.value = result.sRGBHex;
-    render();
-    pushHistory(result.sRGBHex);
-  } catch (e) {}
 });
 
-render();
-pushHistory(input.value);
+function splitSentences(text) {
+  return text
+    .replace(/\s+/g, ' ')
+    .split(/(?<=[.!?])\s+/)
+    .map(s => s.trim())
+    .filter(s => s.split(' ').length >= 8);
+}
+
+plagCheckBtn.addEventListener('click', () => {
+  const text = plagInput.value.trim();
+  if (!text) {
+    plagResults.innerHTML = '<p style="color:var(--marker);">Paste some text first.</p>';
+    return;
+  }
+  const sentences = splitSentences(text);
+  if (!sentences.length) {
+    plagResults.innerHTML = '<p style="color:var(--marker);">Couldn\'t find long enough sentences to check — try pasting a longer passage.</p>';
+    return;
+  }
+  // Sample up to 8 sentences spread across the text, not just the first few
+  const maxChecks = 8;
+  const step = Math.max(1, Math.floor(sentences.length / maxChecks));
+  const sample = [];
+  for (let i = 0; i < sentences.length && sample.length < maxChecks; i += step) {
+    sample.push(sentences[i]);
+  }
+
+  plagResults.innerHTML = '';
+  sample.forEach((sentence, i) => {
+    const trimmed = sentence.length > 120 ? sentence.slice(0, 120) + '…' : sentence;
+    const query = encodeURIComponent('"' + sentence.replace(/["]/g, '') + '"');
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `<div><span class="tag">Phrase ${i + 1}</span><span class="val" style="font-size:0.88rem;">${trimmed}</span></div>`;
+    const link = document.createElement('a');
+    link.className = 'btn btn-copy';
+    link.textContent = 'Check on Google';
+    link.href = 'https://www.google.com/search?q=' + query;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.addEventListener('click', () => { triggerSponsoredTab(); });
+    row.appendChild(link);
+    plagResults.appendChild(row);
+  });
+
+  const note = document.createElement('p');
+  note.style.cssText = 'font-size:0.8rem;color:var(--slate);margin-top:14px;';
+  note.textContent = 'Each link searches Google for that exact phrase in quotes. If it returns your own source or nothing at all, that phrase is likely original. If it returns someone else\'s page with the same wording, take a closer look.';
+  plagResults.appendChild(note);
+});
 </script>
 
 </body>

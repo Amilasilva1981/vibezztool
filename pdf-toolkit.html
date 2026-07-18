@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Toolkit — Merge, Split, Rotate, Delete Pages & Number PDFs Free</title>
+<meta name="description" content="A real PDF editor for common tasks: merge multiple PDFs, extract or split pages, rotate pages, delete pages, or add page numbers. Runs entirely in your browser, no upload, no sign-up.">
+<link rel="canonical" href="https://vibezztool.com/pdf-toolkit.html">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+
+<!-- Google Search Console verification -->
+<meta name="google-site-verification" content="mbEBF9wAaMvUbRzbMMDNf_vVcmpOEGcBhN4omLFSW4I" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E965L0X74E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E965L0X74E');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+Sinhala:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand"><span class="brand-mark">VT</span>VibezzTool<span class="dot">.</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="Tools navigation">
+      <a href="index.html" class="">Home</a>
+      <a href="bio-font-generator.html" class="">Bio Font Generator</a>
+      <a href="character-counter.html" class="">Character Counter</a>
+      <a href="word-counter.html" class="">Word Counter</a>
+      <a href="password-generator.html" class="">Password Generator</a>
+      <a href="color-picker.html" class="">Color Picker</a>
+      <a href="color-palette-generator.html" class="">Color Palette Generator</a>
+      <a href="hashtag-helper.html" class="">Hashtag Helper</a>
+      <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
+      <a href="image-compressor.html" class="">Image Compressor (KB Target)</a>
+      <a href="favicon-generator.html" class="">Favicon Generator</a>
+      <a href="pdf-word-converter.html" class="">PDF ⇄ Word Converter</a>
+      <a href="pdf-toolkit.html" class="current">PDF Toolkit</a>
+      <a href="plagiarism-checker.html" class="">Plagiarism Checker</a>
+      <a href="qr-code-generator.html" class="">QR Code Generator</a>
+      <a href="guides.html" class="">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+    <div class="ad-slot" id="header-ad-container" style="min-height:90px;"></div>
+    <script>
+    (function () {
+      var isDesktop = window.innerWidth >= 768;
+      var key = isDesktop ? '7e436d6bb223e46e9331993baa2993f2' : 'e602a045ae6e46ce3e7855c8cf71b65f';
+      var w = isDesktop ? 728 : 300;
+      var h = isDesktop ? 90 : 250;
+      var container = document.getElementById('header-ad-container');
+      if (!container) return;
+      container.style.minHeight = h + 'px';
+      var opts = document.createElement('script');
+      opts.text = "atOptions = { 'key': '" + key + "', 'format': 'iframe', 'height': " + h + ", 'width': " + w + ", 'params': {} };";
+      container.appendChild(opts);
+      var inv = document.createElement('script');
+      inv.src = 'https://www.highperformanceformat.com/' + key + '/invoke.js';
+      container.appendChild(inv);
+    })();
+    </script>
+
+  <main class="wrap">
+    <section class="tool-hero">
+      <span class="stamp">DOCUMENT TOOL · 12</span>
+      <h1>PDF Toolkit — Merge, Split, Rotate &amp; Organize PDFs</h1>
+      <p class="lede">A real, working PDF editor for the tasks people actually need: combine multiple PDFs into one, pull out specific pages, rotate pages, delete pages, or add page numbers. Everything runs in your browser using the same open-source engine (pdf-lib) trusted by many production apps — no upload to a server.</p>
+    </section>
+
+    <div class="panel">
+      <div class="controls-row" style="flex-wrap:wrap;">
+        <button class="btn btn-cta" id="modeMerge">🔗 Merge</button>
+        <button class="btn btn-outline" id="modeSplit">✂️ Split / Extract</button>
+        <button class="btn btn-outline" id="modeRotate">🔄 Rotate</button>
+        <button class="btn btn-outline" id="modeDelete">🗑️ Delete Pages</button>
+        <button class="btn btn-outline" id="modeNumber">🔢 Add Page Numbers</button>
+      </div>
+
+      <div id="dropZone" style="border:2px dashed var(--line); border-radius: 12px; padding: 32px 20px; text-align:center; cursor:pointer; background: var(--paper); margin-top:14px;">
+        <p id="dropText" style="font-weight:600; margin:0 0 6px;">📁 Drag &amp; Drop PDF(s) Here, or Click to Browse</p>
+        <p style="font-size:0.82rem;color:var(--slate); margin:0;">Merge accepts multiple files; other tools use one file at a time</p>
+        <input type="file" id="fileInput" accept="application/pdf" multiple style="display:none;">
+      </div>
+
+      <div id="fileListArea" style="margin-top:14px;"></div>
+
+      <div id="optionsArea" style="margin-top:14px;"></div>
+
+      <div class="controls-row">
+        <button class="btn btn-cta" id="runBtn" disabled>⚡ Run</button>
+      </div>
+      <span class="sponsor-notice">⚡ After you press this button, your file will download (or you'll get your result) — and at the same time, you may be taken to a sponsor page. No need to interact with it — just come back to VibezzTool.</span>
+
+      <div id="resultArea" style="margin-top:18px;"></div>
+    </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">Need to convert the result to Word afterward? Try the PDF ⇄ Word Converter.</p>
+      <div class="tool-grid">
+      <a class="tool-card" href="bio-font-generator.html">
+        <span class="badge b-1">Aa</span>
+        <h3>Bio Font Generator</h3>
+        <p>Fancy fonts for your Instagram/TikTok bio</p>
+      </a>
+      <a class="tool-card" href="character-counter.html">
+        <span class="badge b-2">C·</span>
+        <h3>Character Counter</h3>
+        <p>Check caption & meta description limits</p>
+      </a>
+      <a class="tool-card" href="word-counter.html">
+        <span class="badge b-3">W·</span>
+        <h3>Word Counter</h3>
+        <p>Word count and reading time for blog posts</p>
+      </a>
+      <a class="tool-card" href="password-generator.html">
+        <span class="badge b-4">🔑</span>
+        <h3>Password Generator</h3>
+        <p>A strong password in one click</p>
+      </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
+      <a class="tool-card" href="color-palette-generator.html">
+        <span class="badge b-6">🌈</span>
+        <h3>Color Palette Generator</h3>
+        <p>Ready-made palettes for design & thumbnails</p>
+      </a>
+      </div>
+    </section>
+
+  </main>
+  <div class="wrap">
+    <div class="ad-slot" id="in-content-ad-container" style="min-height:100px;">
+      <script async data-cfasync="false" src="https://pl30335796.effectivecpmnetwork.com/1e27890c9ddae0c61a0d72598500123b/invoke.js"></script>
+      <div id="container-1e27890c9ddae0c61a0d72598500123b"></div>
+    </div>
+
+  </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <h4>Tools</h4>
+          <a href="bio-font-generator.html">Bio Font Generator</a>
+        <a href="character-counter.html">Character Counter</a>
+        <a href="word-counter.html">Word Counter</a>
+        <a href="password-generator.html">Password Generator</a>
+        </div>
+        <div>
+          <h4>&nbsp;</h4>
+          <a href="color-picker.html">Color Picker</a>
+        <a href="color-palette-generator.html">Color Palette Generator</a>
+        <a href="hashtag-helper.html">Hashtag Helper</a>
+        <a href="image-to-webp-converter.html">Image to WebP Converter</a>
+        <a href="image-compressor.html">Image Compressor (KB Target)</a>
+        <a href="favicon-generator.html">Favicon Generator</a>
+        <a href="pdf-word-converter.html">PDF ⇄ Word Converter</a>
+        <a href="pdf-toolkit.html">PDF Toolkit</a>
+        <a href="plagiarism-checker.html">Plagiarism Checker</a>
+        <a href="qr-code-generator.html">QR Code Generator</a>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="guides.html">Blog / Guides</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Use</a>
+        </div>
+        <div>
+          <h4>VibezzTool</h4>
+          <a href="index.html">No sign-up. No downloads. Runs instantly in your browser.</a>
+        </div>
+      </div>
+      <div class="bottom">© 2026 VibezzTool. Every tool runs locally in your browser — your files and text are never uploaded to a server.</div>
+    </div>
+  </footer>
+
+<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script>
+const modes = ['modeMerge','modeSplit','modeRotate','modeDelete','modeNumber'];
+let currentMode = 'merge';
+let files = [];
+
+const dropZone = document.getElementById('dropZone');
+const dropText = document.getElementById('dropText');
+const fileInput = document.getElementById('fileInput');
+const fileListArea = document.getElementById('fileListArea');
+const optionsArea = document.getElementById('optionsArea');
+const runBtn = document.getElementById('runBtn');
+const resultArea = document.getElementById('resultArea');
+
+function setMode(mode) {
+  currentMode = mode;
+  modes.forEach(id => {
+    document.getElementById(id).className = (id === 'mode' + mode[0].toUpperCase() + mode.slice(1))
+      ? 'btn btn-cta' : 'btn btn-outline';
+  });
+  files = [];
+  fileListArea.innerHTML = '';
+  resultArea.innerHTML = '';
+  runBtn.disabled = true;
+  fileInput.multiple = (mode === 'merge');
+  dropText.textContent = mode === 'merge'
+    ? '📁 Drag & Drop PDFs Here (2 or more), or Click to Browse'
+    : '📁 Drag & Drop a PDF Here, or Click to Browse';
+  renderOptions();
+}
+
+document.getElementById('modeMerge').addEventListener('click', () => setMode('merge'));
+document.getElementById('modeSplit').addEventListener('click', () => setMode('split'));
+document.getElementById('modeRotate').addEventListener('click', () => setMode('rotate'));
+document.getElementById('modeDelete').addEventListener('click', () => setMode('delete'));
+document.getElementById('modeNumber').addEventListener('click', () => setMode('number'));
+
+dropZone.addEventListener('click', () => fileInput.click());
+dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--marker)'; });
+dropZone.addEventListener('dragleave', () => dropZone.style.borderColor = 'var(--line)');
+dropZone.addEventListener('drop', (e) => {
+  e.preventDefault(); dropZone.style.borderColor = 'var(--line)';
+  handleFiles(e.dataTransfer.files);
+});
+fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
+
+function handleFiles(fileListRaw) {
+  const incoming = Array.from(fileListRaw).filter(f => f.type === 'application/pdf');
+  files = currentMode === 'merge' ? [...files, ...incoming] : incoming.slice(0, 1);
+  renderFileList();
+  renderOptions();
+  updateRunEnabled();
+}
+
+function renderFileList() {
+  fileListArea.innerHTML = '';
+  files.forEach((f, i) => {
+    const row = document.createElement('div');
+    row.className = 'result-row';
+    row.innerHTML = `<span class="tag">${i + 1}. ${f.name}</span>`;
+    if (currentMode === 'merge') {
+      const rm = document.createElement('button');
+      rm.className = 'btn btn-copy';
+      rm.textContent = 'Remove';
+      rm.onclick = () => { files.splice(i, 1); renderFileList(); updateRunEnabled(); };
+      row.appendChild(rm);
+    }
+    fileListArea.appendChild(row);
+  });
+}
+
+function updateRunEnabled() {
+  if (currentMode === 'merge') runBtn.disabled = files.length < 2;
+  else runBtn.disabled = files.length < 1;
+}
+
+function renderOptions() {
+  optionsArea.innerHTML = '';
+  if (currentMode === 'split') {
+    optionsArea.innerHTML = `
+      <label for="pageRange">Pages to extract (e.g. 1-3,5)</label>
+      <input type="text" id="pageRange" placeholder="e.g. 1-3,5">`;
+  } else if (currentMode === 'rotate') {
+    optionsArea.innerHTML = `
+      <label for="rotateDeg">Rotate by</label>
+      <select id="rotateDeg">
+        <option value="90">90° clockwise</option>
+        <option value="180">180°</option>
+        <option value="270">270° clockwise (90° counter-clockwise)</option>
+      </select>`;
+  } else if (currentMode === 'delete') {
+    optionsArea.innerHTML = `
+      <label for="deletePages">Pages to delete (e.g. 2,4-5)</label>
+      <input type="text" id="deletePages" placeholder="e.g. 2,4-5">`;
+  } else if (currentMode === 'number') {
+    optionsArea.innerHTML = `
+      <label for="numberPos">Page number position</label>
+      <select id="numberPos">
+        <option value="bottom-center">Bottom center</option>
+        <option value="bottom-right">Bottom right</option>
+        <option value="bottom-left">Bottom left</option>
+      </select>`;
+  }
+}
+setMode('merge');
+
+function parseRanges(str, maxPage) {
+  const pages = new Set();
+  str.split(',').forEach(part => {
+    part = part.trim();
+    if (!part) return;
+    if (part.includes('-')) {
+      const [a, b] = part.split('-').map(n => parseInt(n.trim(), 10));
+      for (let i = a; i <= b; i++) if (i >= 1 && i <= maxPage) pages.add(i - 1);
+    } else {
+      const n = parseInt(part, 10);
+      if (n >= 1 && n <= maxPage) pages.add(n - 1);
+    }
+  });
+  return pages;
+}
+
+async function downloadBlob(blob, name) {
+  const url = URL.createObjectURL(blob);
+  const row = document.createElement('div');
+  row.className = 'result-row';
+  row.innerHTML = `<span class="tag">${name} — ready</span>`;
+  const dl = document.createElement('a');
+  dl.className = 'btn btn-cta';
+  dl.textContent = 'Download';
+  dl.href = url;
+  dl.download = name;
+  dl.addEventListener('click', () => { triggerSponsoredTab(); });
+  row.appendChild(dl);
+  resultArea.appendChild(row);
+}
+
+runBtn.addEventListener('click', async () => {
+  runBtn.disabled = true;
+  runBtn.textContent = 'Processing...';
+  resultArea.innerHTML = '';
+  try {
+    const { PDFDocument, degrees } = PDFLib;
+
+    if (currentMode === 'merge') {
+      const merged = await PDFDocument.create();
+      for (const f of files) {
+        const bytes = await f.arrayBuffer();
+        const src = await PDFDocument.load(bytes);
+        const pages = await merged.copyPages(src, src.getPageIndices());
+        pages.forEach(p => merged.addPage(p));
+      }
+      const bytes = await merged.save();
+      await downloadBlob(new Blob([bytes], { type: 'application/pdf' }), 'merged.pdf');
+
+    } else if (currentMode === 'split') {
+      const bytes = await files[0].arrayBuffer();
+      const src = await PDFDocument.load(bytes);
+      const total = src.getPageCount();
+      const rangeStr = document.getElementById('pageRange').value || '1-' + total;
+      const indices = Array.from(parseRanges(rangeStr, total)).sort((a,b) => a-b);
+      if (!indices.length) throw new Error('no pages selected');
+      const out = await PDFDocument.create();
+      const copied = await out.copyPages(src, indices);
+      copied.forEach(p => out.addPage(p));
+      const outBytes = await out.save();
+      await downloadBlob(new Blob([outBytes], { type: 'application/pdf' }), 'extracted.pdf');
+
+    } else if (currentMode === 'rotate') {
+      const bytes = await files[0].arrayBuffer();
+      const src = await PDFDocument.load(bytes);
+      const deg = parseInt(document.getElementById('rotateDeg').value, 10);
+      src.getPages().forEach(p => p.setRotation(degrees(p.getRotation().angle + deg)));
+      const outBytes = await src.save();
+      await downloadBlob(new Blob([outBytes], { type: 'application/pdf' }), 'rotated.pdf');
+
+    } else if (currentMode === 'delete') {
+      const bytes = await files[0].arrayBuffer();
+      const src = await PDFDocument.load(bytes);
+      const total = src.getPageCount();
+      const toDelete = parseRanges(document.getElementById('deletePages').value || '', total);
+      const keepIndices = [];
+      for (let i = 0; i < total; i++) if (!toDelete.has(i)) keepIndices.push(i);
+      if (!keepIndices.length) throw new Error('all pages selected for deletion');
+      const out = await PDFDocument.create();
+      const copied = await out.copyPages(src, keepIndices);
+      copied.forEach(p => out.addPage(p));
+      const outBytes = await out.save();
+      await downloadBlob(new Blob([outBytes], { type: 'application/pdf' }), 'pages-removed.pdf');
+
+    } else if (currentMode === 'number') {
+      const bytes = await files[0].arrayBuffer();
+      const src = await PDFDocument.load(bytes);
+      const font = await src.embedFont(PDFLib.StandardFonts.Helvetica);
+      const pos = document.getElementById('numberPos').value;
+      src.getPages().forEach((p, i) => {
+        const { width } = p.getSize();
+        const text = String(i + 1);
+        let x = width / 2 - 6;
+        if (pos === 'bottom-right') x = width - 40;
+        if (pos === 'bottom-left') x = 24;
+        p.drawText(text, { x, y: 24, size: 11, font });
+      });
+      const outBytes = await src.save();
+      await downloadBlob(new Blob([outBytes], { type: 'application/pdf' }), 'numbered.pdf');
+    }
+    showToast('Done ✓');
+  } catch (e) {
+    resultArea.innerHTML = '<p style="color:var(--marker);">Something went wrong — check your page range/file and try again. (' + e.message + ')</p>';
+  }
+  runBtn.disabled = false;
+  runBtn.textContent = '⚡ Run';
+});
+</script>
+
+</body>
+</html>
