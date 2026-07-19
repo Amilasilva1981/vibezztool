@@ -101,6 +101,7 @@
           <canvas id="qrCanvas" width="256" height="256"></canvas>
         </div>
       </div>
+      <p id="qrError" style="color:var(--marker);font-size:0.85rem;text-align:center;display:none;"></p>
 
       <div class="controls-row" style="justify-content:center;">
         <button class="btn btn-cta" id="downloadQr">⬇️ Download PNG</button>
@@ -193,37 +194,29 @@
   </footer>
 
 <script src="app.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.4.4/qrcode.min.js"></script>
 <script>
 const qrInput = document.getElementById('qrInput');
 const qrSize = document.getElementById('qrSize');
 const canvas = document.getElementById('qrCanvas');
+const qrError = document.getElementById('qrError');
 const downloadQr = document.getElementById('downloadQr');
 
-let qrInstance = null;
-const hiddenDiv = document.createElement('div');
-hiddenDiv.style.display = 'none';
-document.body.appendChild(hiddenDiv);
-
+// QRCode.toCanvas() is fully callback-based (no arbitrary setTimeout
+// guessing), so this renders reliably regardless of device speed —
+// the earlier version used a hidden-div + fixed-delay approach that
+// could finish rendering after the delay had already passed on slower
+// (mostly mobile) devices, leaving the canvas blank.
 function render() {
   const text = qrInput.value.trim() || 'https://vibezztool.com';
-  const size = parseInt(qrSize.value, 10);
-  hiddenDiv.innerHTML = '';
-  qrInstance = new QRCode(hiddenDiv, {
-    text: text,
-    width: size,
-    height: size,
-    correctLevel: QRCode.CorrectLevel.M
+  QRCode.toCanvas(canvas, text, { width: 256, margin: 1 }, function (error) {
+    if (error) {
+      qrError.textContent = 'Could not generate a QR code for this input.';
+      qrError.style.display = 'block';
+    } else {
+      qrError.style.display = 'none';
+    }
   });
-  setTimeout(() => {
-    const img = hiddenDiv.querySelector('img') || hiddenDiv.querySelector('canvas');
-    const displaySize = 256;
-    canvas.width = displaySize;
-    canvas.height = displaySize;
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, displaySize, displaySize);
-    if (img) ctx.drawImage(img, 0, 0, displaySize, displaySize);
-  }, 60);
 }
 
 qrInput.addEventListener('input', render);
@@ -233,17 +226,13 @@ render();
 downloadQr.addEventListener('click', () => {
   const text = qrInput.value.trim() || 'https://vibezztool.com';
   const size = parseInt(qrSize.value, 10);
-  hiddenDiv.innerHTML = '';
-  new QRCode(hiddenDiv, { text: text, width: size, height: size, correctLevel: QRCode.CorrectLevel.M });
-  setTimeout(() => {
-    const img = hiddenDiv.querySelector('img');
-    const fullCanvas = document.createElement('canvas');
-    fullCanvas.width = size;
-    fullCanvas.height = size;
-    const ctx = fullCanvas.getContext('2d');
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, size, size);
-    if (img) ctx.drawImage(img, 0, 0, size, size);
+  const fullCanvas = document.createElement('canvas');
+  QRCode.toCanvas(fullCanvas, text, { width: size, margin: 1 }, function (error) {
+    if (error) {
+      qrError.textContent = 'Could not generate a QR code for this input.';
+      qrError.style.display = 'block';
+      return;
+    }
     fullCanvas.toBlob((blob) => {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -253,7 +242,7 @@ downloadQr.addEventListener('click', () => {
       triggerSponsoredTab();
       showToast('Downloaded ✓');
     }, 'image/png');
-  }, 80);
+  });
 });
 </script>
 
