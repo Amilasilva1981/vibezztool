@@ -99,6 +99,10 @@
           <button class="btn btn-outline" data-kb="100">100 KB</button>
           <button class="btn btn-outline" data-kb="200">200 KB</button>
         </div>
+        <label class="check" style="margin-top:10px;">
+          <input type="checkbox" id="keepDimensions">
+          Keep original resolution (never shrink width/height — quality only)
+        </label>
       </div>
 
       <div class="controls-row">
@@ -250,12 +254,13 @@ function canvasToBlob(canvas, quality) {
   return new Promise((resolve) => canvas.toBlob(resolve, 'image/jpeg', quality));
 }
 
-async function compressToTarget(file, targetBytes) {
+async function compressToTarget(file, targetBytes, keepDimensions) {
   const img = await loadImage(file);
   let scale = 1.0;
+  const minScale = keepDimensions ? 1.0 : 0.15;
   let best = null;
 
-  while (scale >= 0.15) {
+  while (scale >= minScale) {
     const canvas = document.createElement('canvas');
     canvas.width = Math.round(img.width * scale);
     canvas.height = Math.round(img.height * scale);
@@ -263,9 +268,11 @@ async function compressToTarget(file, targetBytes) {
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
     let lo = 0.05, hi = 0.95;
+    let lowestAttempt = null;
     for (let i = 0; i < 7; i++) {
       const mid = (lo + hi) / 2;
       const blob = await canvasToBlob(canvas, mid);
+      lowestAttempt = { blob, scale, quality: mid };
       if (blob.size <= targetBytes) {
         best = { blob, scale, quality: mid };
         lo = mid;
@@ -274,6 +281,11 @@ async function compressToTarget(file, targetBytes) {
       }
     }
     if (best) return best;
+    if (keepDimensions) {
+      // Resolution is locked — return the lowest-quality attempt at full
+      // size even though it didn't hit the target, rather than shrinking.
+      return lowestAttempt;
+    }
     scale -= 0.15;
   }
 
@@ -290,13 +302,14 @@ async function compressToTarget(file, targetBytes) {
 compressBtn.addEventListener('click', async () => {
   const targetKB = parseInt(targetInput.value, 10) || 100;
   const targetBytes = targetKB * 1024;
+  const keepDimensions = document.getElementById('keepDimensions').checked;
   compressBtn.disabled = true;
   compressBtn.textContent = 'Compressing...';
   resultsList.innerHTML = '';
   converted = [];
 
   for (const file of files) {
-    const result = await compressToTarget(file, targetBytes);
+    const result = await compressToTarget(file, targetBytes, keepDimensions);
     const name = file.name.replace(/\.[^.]+$/, '') + '-compressed.jpg';
     converted.push({ name, blob: result.blob });
     const url = URL.createObjectURL(result.blob);
