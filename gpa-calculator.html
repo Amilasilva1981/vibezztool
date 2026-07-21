@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us — VibezzTool</title>
-<meta name="description" content="Learn why VibezzTool builds free, no-sign-up utility tools for creators and bloggers, and how every tool keeps your data private by running entirely in your browser.">
-<link rel="canonical" href="https://vibezztool.com/about.html">
+<title>GPA Calculator — Free Online Tool (US 4.0 Scale)</title>
+<meta name="description" content="Calculate your semester or cumulative GPA on the standard US 4.0 scale. Add courses with credit hours and letter grades — free, instant, no sign-up.">
+<link rel="canonical" href="https://vibezztool.com/gpa-calculator.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -54,7 +54,7 @@
       <a href="qr-code-generator.html" class="">QR Code Generator</a>
       <a href="json-formatter.html" class="">JSON Formatter</a>
       <a href="css-gradient-generator.html" class="">CSS Gradient Generator</a>
-      <a href="gpa-calculator.html" class="">GPA Calculator</a>
+      <a href="gpa-calculator.html" class="current">GPA Calculator</a>
       <a href="unit-converter.html" class="">Unit Converter</a>
       <a href="invoice-generator.html" class="">Invoice Generator</a>
       <a href="guides.html" class="">Blog</a>
@@ -83,35 +83,59 @@
 
   <main class="wrap">
     <section class="tool-hero">
-      <span class="stamp">about us</span>
-      <h1>Free tools for the people who make the internet interesting</h1>
-      <p class="lede">VibezzTool is a small toolkit built for content creators, bloggers, and small business owners who need quick, reliable utilities without the sign-up walls and pop-up ads that slow everything down.</p>
+      <span class="stamp">STUDENT TOOL · 17</span>
+      <h1>GPA Calculator — Free, Instant (US 4.0 Scale)</h1>
+      <p class="lede">Add your courses with credit hours and letter grades to calculate your semester or cumulative GPA on the standard US 4.0 scale. Free, no sign-up, nothing saved to a server.</p>
     </section>
 
     <div class="panel">
-      <h2>Why we built this</h2>
-      <p>Every day, creators open a dozen browser tabs just to convert an image, count characters, or find the right hashtags. Most of those tools ask for an email address, bury the actual function under three fake "Download" buttons, or interrupt you with pop-ups. We wanted something faster and more honest.</p>
-      <p>VibezzTool runs every tool directly in your browser using JavaScript. Nothing you type, upload, or generate is sent to a server — which also means it works instantly, with no waiting on uploads.</p>
-    </div>
+      <div id="courseRows"></div>
+      <div class="controls-row">
+        <button class="btn btn-outline" id="addRow">+ Add Course</button>
+      </div>
+      <span class="sponsor-notice">⚡ Note: After clicking the button, your file will download automatically. You may be redirected to a sponsor page; please feel free to ignore it and return to VibezzTool.</span>
 
-    <div class="panel">
-      <h2>How we keep this free</h2>
-      <p>VibezzTool is free because of advertising — we're not going to pretend otherwise. What we do control is which ads: no adult content, no gambling, no autoplay video, no fake buttons pretending to be your download. If a sponsored link ever opens in a new tab, your result is already sitting in the tab you started in — you never have to click through anything to get it.</p>
-    </div>
-
-    <div class="panel">
-      <h2>What we stand for</h2>
-      <div class="info-grid">
-        <div class="card"><h3>Privacy by default</h3><p>Your data never leaves your device. There's nothing to leak because nothing is stored.</p></div>
-        <div class="card"><h3>No dark patterns</h3><p>One clear action per page. No countdown timers, no fake buttons, no forced sign-ups.</p></div>
-        <div class="card"><h3>Always free</h3><p>Every tool on this site is free to use, with no usage limits or premium tiers.</p></div>
+      <div class="readout-grid" style="margin-top:20px;">
+        <div class="readout"><span class="num" id="gpaResult">0.00</span><span class="lbl">GPA</span></div>
+        <div class="readout"><span class="num" id="totalCredits">0</span><span class="lbl">Total Credits</span></div>
       </div>
     </div>
-
-    <div class="panel">
-      <h2>Get in touch</h2>
-      <p>Questions, feedback, or a tool idea? Reach us at <a href="mailto:hardesilva@gmail.com" style="color:var(--marker);font-weight:600;">hardesilva@gmail.com</a>.</p>
-    </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">Also check your essay's word count with the Word Counter.</p>
+      <div class="tool-grid">
+      <a class="tool-card" href="bio-font-generator.html">
+        <span class="badge b-1">Aa</span>
+        <h3>Bio Font Generator</h3>
+        <p>Fancy fonts for your Instagram/TikTok bio</p>
+      </a>
+      <a class="tool-card" href="character-counter.html">
+        <span class="badge b-2">C·</span>
+        <h3>Character Counter</h3>
+        <p>Check caption & meta description limits</p>
+      </a>
+      <a class="tool-card" href="word-counter.html">
+        <span class="badge b-3">W·</span>
+        <h3>Word Counter</h3>
+        <p>Word count and reading time for blog posts</p>
+      </a>
+      <a class="tool-card" href="password-generator.html">
+        <span class="badge b-4">🔑</span>
+        <h3>Password Generator</h3>
+        <p>A strong password in one click</p>
+      </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
+      <a class="tool-card" href="color-palette-generator.html">
+        <span class="badge b-6">🌈</span>
+        <h3>Color Palette Generator</h3>
+        <p>Ready-made palettes for design & thumbnails</p>
+      </a>
+      </div>
+    </section>
 
   </main>
   <div class="wrap">
@@ -167,6 +191,47 @@
   </footer>
 
 <script src="app.js"></script>
+<script>
+const GRADE_POINTS = { 'A': 4.0, 'A-': 3.7, 'B+': 3.3, 'B': 3.0, 'B-': 2.7, 'C+': 2.3, 'C': 2.0, 'C-': 1.7, 'D+': 1.3, 'D': 1.0, 'F': 0.0 };
+const courseRows = document.getElementById('courseRows');
+let rowCount = 0;
+
+function addRow() {
+  rowCount++;
+  const row = document.createElement('div');
+  row.className = 'result-row';
+  row.style.gap = '10px';
+  row.innerHTML = `
+    <input type="text" placeholder="Course name (optional)" style="flex:2;" class="course-name">
+    <input type="number" placeholder="Credits" min="0" step="0.5" value="3" style="flex:1;max-width:90px;" class="course-credits">
+    <select class="course-grade" style="flex:1;max-width:100px;">
+      ${Object.keys(GRADE_POINTS).map(g => `<option value="${g}">${g}</option>`).join('')}
+    </select>
+    <button class="btn btn-copy remove-row">✕</button>
+  `;
+  row.querySelector('.remove-row').addEventListener('click', () => { row.remove(); calculate(); });
+  row.querySelectorAll('input, select').forEach(el => el.addEventListener('input', calculate));
+  courseRows.appendChild(row);
+  calculate();
+}
+
+function calculate() {
+  let totalPoints = 0, totalCredits = 0;
+  courseRows.querySelectorAll('.result-row').forEach(row => {
+    const credits = parseFloat(row.querySelector('.course-credits').value) || 0;
+    const grade = row.querySelector('.course-grade').value;
+    totalPoints += credits * GRADE_POINTS[grade];
+    totalCredits += credits;
+  });
+  const gpa = totalCredits > 0 ? (totalPoints / totalCredits) : 0;
+  document.getElementById('gpaResult').textContent = gpa.toFixed(2);
+  document.getElementById('totalCredits').textContent = totalCredits;
+  triggerSponsoredTab();
+}
+
+document.getElementById('addRow').addEventListener('click', addRow);
+addRow(); addRow(); addRow();
+</script>
 
 </body>
 </html>

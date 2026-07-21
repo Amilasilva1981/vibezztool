@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Color Picker — Free HEX, RGB, HSL Color Code Tool</title>
-<meta name="description" content="Get HEX, RGB, and HSL color codes instantly for design, thumbnail, or logo work. Pick a color straight from your screen — 100% free.">
-<link rel="canonical" href="https://vibezztool.com/color-picker.html">
+<title>Unit Converter — Length, Weight, Temperature & Volume, Free</title>
+<meta name="description" content="Convert centimeters to inches, kilograms to pounds, Celsius to Fahrenheit, cups to liters, and more — free, instant, no sign-up, updates live as you type.">
+<link rel="canonical" href="https://vibezztool.com/unit-converter.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -42,7 +42,7 @@
       <a href="character-counter.html" class="">Character Counter</a>
       <a href="word-counter.html" class="">Word Counter</a>
       <a href="password-generator.html" class="">Password Generator</a>
-      <a href="color-picker.html" class="current">Color Picker</a>
+      <a href="color-picker.html" class="">Color Picker</a>
       <a href="color-palette-generator.html" class="">Color Palette Generator</a>
       <a href="hashtag-helper.html" class="">Hashtag Helper</a>
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
@@ -55,7 +55,7 @@
       <a href="json-formatter.html" class="">JSON Formatter</a>
       <a href="css-gradient-generator.html" class="">CSS Gradient Generator</a>
       <a href="gpa-calculator.html" class="">GPA Calculator</a>
-      <a href="unit-converter.html" class="">Unit Converter</a>
+      <a href="unit-converter.html" class="current">Unit Converter</a>
       <a href="invoice-generator.html" class="">Invoice Generator</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
@@ -83,31 +83,37 @@
 
   <main class="wrap">
     <section class="tool-hero">
-      <span class="stamp">DESIGN TOOL · 05</span>
-      <h1>Color Picker — Get HEX / RGB / HSL Codes Instantly</h1>
-      <p class="lede">Pick a color code for a thumbnail, logo, or poster right here. Copy it in HEX, RGB, or HSL format — whichever you need.</p>
+      <span class="stamp">UTILITY TOOL · 16</span>
+      <h1>Unit Converter — Length, Weight, Temperature &amp; Volume</h1>
+      <p class="lede">Convert between metric and imperial units instantly — centimeters to inches, kilograms to pounds, Celsius to Fahrenheit, cups to liters, and more. Free, no sign-up, updates live as you type.</p>
     </section>
 
     <div class="panel">
-      <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
-        <input type="color" id="cpInput" value="#EF6461" style="width:90px; height:90px; border:none; border-radius:14px; cursor:pointer; padding:0;">
-        <div>
-          <button class="btn btn-accent" id="cpEyedrop">🎯 Pick a Color From Your Screen</button>
-          <p style="font-size:0.78rem;color:var(--slate);margin-top:8px;">(Only works on Chrome/Edge browsers)</p>
-        </div>
+      <div class="controls-row" style="flex-wrap:wrap;">
+        <button class="btn btn-cta" id="catLength">📏 Length</button>
+        <button class="btn btn-outline" id="catWeight">⚖️ Weight</button>
+        <button class="btn btn-outline" id="catTemp">🌡️ Temperature</button>
+        <button class="btn btn-outline" id="catVolume">🧪 Volume</button>
       </div>
 
+      <div style="margin-top:18px; display:flex; gap:16px; align-items:flex-end; flex-wrap:wrap;">
+        <div style="flex:1; min-width:140px;">
+          <label for="fromValue">From</label>
+          <input type="number" id="fromValue" value="1">
+          <select id="fromUnit" style="margin-top:8px;"></select>
+        </div>
+        <div style="font-size:1.5rem; color:var(--slate); padding-bottom:10px;">=</div>
+        <div style="flex:1; min-width:140px;">
+          <label for="toValue">To</label>
+          <input type="text" id="toValue" readonly style="font-weight:700;">
+          <select id="toUnit" style="margin-top:8px;"></select>
+        </div>
+      </div>
       <span class="sponsor-notice">⚡ Note: After clicking the button, your file will download automatically. You may be redirected to a sponsor page; please feel free to ignore it and return to VibezzTool.</span>
-      <div id="cpResults" style="margin-top:20px;"></div>
-    </div>
-
-    <div class="panel">
-      <h2>Recently Picked Colors</h2>
-      <div id="cpHistory" class="swatch-strip"></div>
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
-      <p class="hint">Need a full matching palette? Try the Color Palette Generator.</p>
+      <p class="hint">Working with a recipe? Check the Word Counter for your blog post too.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
@@ -129,15 +135,15 @@
         <h3>Password Generator</h3>
         <p>A strong password in one click</p>
       </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
       <a class="tool-card" href="color-palette-generator.html">
         <span class="badge b-6">🌈</span>
         <h3>Color Palette Generator</h3>
         <p>Ready-made palettes for design & thumbnails</p>
-      </a>
-      <a class="tool-card" href="hashtag-helper.html">
-        <span class="badge b-7">#</span>
-        <h3>Hashtag Helper</h3>
-        <p>Curated hashtag sets by niche</p>
       </a>
       </div>
     </section>
@@ -197,86 +203,104 @@
 
 <script src="app.js"></script>
 <script>
-const input = document.getElementById('cpInput');
-const results = document.getElementById('cpResults');
-const historyEl = document.getElementById('cpHistory');
-let history = [];
-
-function hexToRgb(hex) {
-  const bigint = parseInt(hex.slice(1), 16);
-  return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
-}
-function rgbToHsl(r, g, b) {
-  r/=255; g/=255; b/=255;
-  const max = Math.max(r,g,b), min = Math.min(r,g,b);
-  let h, s, l = (max+min)/2;
-  if (max === min) { h = s = 0; }
-  else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
-    }
-    h /= 6;
+const CATEGORIES = {
+  length: {
+    units: {
+      mm: 0.001, cm: 0.01, m: 1, km: 1000,
+      in: 0.0254, ft: 0.3048, yd: 0.9144, mi: 1609.344
+    },
+    base: 'm',
+    labels: { mm: 'Millimeters', cm: 'Centimeters', m: 'Meters', km: 'Kilometers', in: 'Inches', ft: 'Feet', yd: 'Yards', mi: 'Miles' },
+    default: ['cm', 'in']
+  },
+  weight: {
+    units: {
+      mg: 0.001, g: 1, kg: 1000, t: 1000000,
+      oz: 28.3495, lb: 453.592, st: 6350.29
+    },
+    base: 'g',
+    labels: { mg: 'Milligrams', g: 'Grams', kg: 'Kilograms', t: 'Metric Tons', oz: 'Ounces', lb: 'Pounds', st: 'Stones' },
+    default: ['kg', 'lb']
+  },
+  volume: {
+    units: {
+      ml: 1, l: 1000, tsp: 4.92892, tbsp: 14.7868, cup: 236.588,
+      floz: 29.5735, pt: 473.176, qt: 946.353, gal: 3785.41
+    },
+    base: 'ml',
+    labels: { ml: 'Milliliters', l: 'Liters', tsp: 'Teaspoons', tbsp: 'Tablespoons', cup: 'Cups (US)', floz: 'Fluid Ounces', pt: 'Pints', qt: 'Quarts', gal: 'Gallons (US)' },
+    default: ['cup', 'ml']
   }
-  return [Math.round(h*360), Math.round(s*100), Math.round(l*100)];
-}
+};
 
-function render() {
-  const hex = input.value;
-  const [r,g,b] = hexToRgb(hex);
-  const [h,s,l] = rgbToHsl(r,g,b);
-  const formats = [
-    ['HEX', hex.toUpperCase()],
-    ['RGB', `rgb(${r}, ${g}, ${b})`],
-    ['HSL', `hsl(${h}, ${s}%, ${l}%)`]
-  ];
-  results.innerHTML = '';
-  formats.forEach(([label, val]) => {
-    const row = document.createElement('div');
-    row.className = 'result-row';
-    row.innerHTML = `<div><span class="tag">${label}</span><span class="val">${val}</span></div>`;
-    const btn = document.createElement('button');
-    btn.className = 'btn btn-copy';
-    btn.textContent = 'Copy';
-    btn.onclick = () => { copyText(val, label); triggerSponsoredTab(); };
-    row.appendChild(btn);
-    results.appendChild(row);
+let currentCat = 'length';
+const catButtons = { length: 'catLength', weight: 'catWeight', temp: 'catTemp', volume: 'catVolume' };
+const fromUnitEl = document.getElementById('fromUnit');
+const toUnitEl = document.getElementById('toUnit');
+const fromValueEl = document.getElementById('fromValue');
+const toValueEl = document.getElementById('toValue');
+
+function setCategory(cat) {
+  currentCat = cat;
+  Object.entries(catButtons).forEach(([c, id]) => {
+    document.getElementById(id).className = (c === cat) ? 'btn btn-cta' : 'btn btn-outline';
   });
+  if (cat === 'temp') {
+    fromUnitEl.innerHTML = '<option value="c">Celsius</option><option value="f">Fahrenheit</option><option value="k">Kelvin</option>';
+    toUnitEl.innerHTML = '<option value="f">Fahrenheit</option><option value="c">Celsius</option><option value="k">Kelvin</option>';
+  } else {
+    const data = CATEGORIES[cat];
+    const options = Object.keys(data.units).map(u => `<option value="${u}">${data.labels[u]}</option>`).join('');
+    fromUnitEl.innerHTML = options;
+    toUnitEl.innerHTML = options;
+    fromUnitEl.value = data.default[0];
+    toUnitEl.value = data.default[1];
+  }
+  convert();
 }
 
-function pushHistory(hex) {
-  history = [hex, ...history.filter(h => h !== hex)].slice(0, 8);
-  historyEl.innerHTML = '';
-  history.forEach(hx => {
-    const sw = document.createElement('div');
-    sw.className = 'swatch';
-    sw.style.background = hx;
-    const lbl = document.createElement('div');
-    lbl.className = 'hex-label';
-    lbl.textContent = hx.toUpperCase();
-    lbl.onclick = () => { copyText(hx.toUpperCase(), 'HEX'); triggerSponsoredTab(); };
-    sw.appendChild(lbl);
-    historyEl.appendChild(sw);
-  });
+function convertTemp(value, from, to) {
+  let celsius;
+  if (from === 'c') celsius = value;
+  else if (from === 'f') celsius = (value - 32) * 5 / 9;
+  else celsius = value - 273.15;
+
+  if (to === 'c') return celsius;
+  if (to === 'f') return celsius * 9 / 5 + 32;
+  return celsius + 273.15;
 }
 
-input.addEventListener('input', () => { render(); pushHistory(input.value); });
-document.getElementById('cpEyedrop').addEventListener('click', async () => {
-  if (!window.EyeDropper) { showToast("Your browser does not support this feature"); return; }
-  try {
-    const ed = new EyeDropper();
-    const result = await ed.open();
-    input.value = result.sRGBHex;
-    render();
-    pushHistory(result.sRGBHex);
-  } catch (e) {}
-});
+function convert() {
+  const val = parseFloat(fromValueEl.value);
+  if (isNaN(val)) { toValueEl.value = ''; return; }
 
-render();
-pushHistory(input.value);
+  if (currentCat === 'temp') {
+    const result = convertTemp(val, fromUnitEl.value, toUnitEl.value);
+    toValueEl.value = round(result);
+  } else {
+    const data = CATEGORIES[currentCat];
+    const inBase = val * data.units[fromUnitEl.value];
+    const result = inBase / data.units[toUnitEl.value];
+    toValueEl.value = round(result);
+  }
+  triggerSponsoredTab();
+}
+
+function round(n) {
+  if (Math.abs(n) >= 1000) return Math.round(n * 100) / 100;
+  return Math.round(n * 1000000) / 1000000;
+}
+
+document.getElementById('catLength').addEventListener('click', () => setCategory('length'));
+document.getElementById('catWeight').addEventListener('click', () => setCategory('weight'));
+document.getElementById('catTemp').addEventListener('click', () => setCategory('temp'));
+document.getElementById('catVolume').addEventListener('click', () => setCategory('volume'));
+
+fromValueEl.addEventListener('input', convert);
+fromUnitEl.addEventListener('change', convert);
+toUnitEl.addEventListener('change', convert);
+
+setCategory('length');
 </script>
 
 </body>

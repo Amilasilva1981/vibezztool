@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us — VibezzTool</title>
-<meta name="description" content="Learn why VibezzTool builds free, no-sign-up utility tools for creators and bloggers, and how every tool keeps your data private by running entirely in your browser.">
-<link rel="canonical" href="https://vibezztool.com/about.html">
+<title>JSON Formatter, Validator & HTML Encoder/Decoder — Free Online Tool</title>
+<meta name="description" content="Format and validate JSON instantly, catch syntax errors, minify, or encode/decode HTML entities. Free, no sign-up, runs entirely in your browser.">
+<link rel="canonical" href="https://vibezztool.com/json-formatter.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -52,7 +52,7 @@
       <a href="pdf-toolkit.html" class="">PDF Toolkit</a>
       <a href="plagiarism-checker.html" class="">Plagiarism Checker</a>
       <a href="qr-code-generator.html" class="">QR Code Generator</a>
-      <a href="json-formatter.html" class="">JSON Formatter</a>
+      <a href="json-formatter.html" class="current">JSON Formatter</a>
       <a href="css-gradient-generator.html" class="">CSS Gradient Generator</a>
       <a href="gpa-calculator.html" class="">GPA Calculator</a>
       <a href="unit-converter.html" class="">Unit Converter</a>
@@ -83,35 +83,81 @@
 
   <main class="wrap">
     <section class="tool-hero">
-      <span class="stamp">about us</span>
-      <h1>Free tools for the people who make the internet interesting</h1>
-      <p class="lede">VibezzTool is a small toolkit built for content creators, bloggers, and small business owners who need quick, reliable utilities without the sign-up walls and pop-up ads that slow everything down.</p>
+      <span class="stamp">DEV TOOL · 15</span>
+      <h1>JSON Formatter &amp; HTML Encoder/Decoder</h1>
+      <p class="lede">Paste messy JSON to instantly format, validate, and catch syntax errors — or switch modes to encode/decode HTML entities. Free, no sign-up, runs entirely in your browser.</p>
     </section>
 
     <div class="panel">
-      <h2>Why we built this</h2>
-      <p>Every day, creators open a dozen browser tabs just to convert an image, count characters, or find the right hashtags. Most of those tools ask for an email address, bury the actual function under three fake "Download" buttons, or interrupt you with pop-ups. We wanted something faster and more honest.</p>
-      <p>VibezzTool runs every tool directly in your browser using JavaScript. Nothing you type, upload, or generate is sent to a server — which also means it works instantly, with no waiting on uploads.</p>
-    </div>
+      <div class="controls-row">
+        <button class="btn btn-cta" id="modeJson">{ } JSON Formatter</button>
+        <button class="btn btn-outline" id="modeHtml">&lt;/&gt; HTML Encoder/Decoder</button>
+      </div>
 
-    <div class="panel">
-      <h2>How we keep this free</h2>
-      <p>VibezzTool is free because of advertising — we're not going to pretend otherwise. What we do control is which ads: no adult content, no gambling, no autoplay video, no fake buttons pretending to be your download. If a sponsored link ever opens in a new tab, your result is already sitting in the tab you started in — you never have to click through anything to get it.</p>
-    </div>
+      <div id="jsonMode" style="margin-top:14px;">
+        <label for="jsonInput">Paste JSON</label>
+        <textarea id="jsonInput" placeholder='{"name":"Alex","tags":["creator","free"]}' style="min-height:180px;font-family:var(--font-mono);"></textarea>
+        <div class="controls-row">
+          <button class="btn btn-cta" id="formatBtn">⚡ Format &amp; Validate</button>
+          <button class="btn btn-outline" id="minifyBtn">Minify</button>
+        </div>
+        <div id="jsonStatus" style="font-size:0.85rem;margin-top:6px;"></div>
+      </div>
 
-    <div class="panel">
-      <h2>What we stand for</h2>
-      <div class="info-grid">
-        <div class="card"><h3>Privacy by default</h3><p>Your data never leaves your device. There's nothing to leak because nothing is stored.</p></div>
-        <div class="card"><h3>No dark patterns</h3><p>One clear action per page. No countdown timers, no fake buttons, no forced sign-ups.</p></div>
-        <div class="card"><h3>Always free</h3><p>Every tool on this site is free to use, with no usage limits or premium tiers.</p></div>
+      <div id="htmlMode" style="margin-top:14px; display:none;">
+        <label for="htmlInput">Paste text or HTML</label>
+        <textarea id="htmlInput" placeholder="<div class='card'>Hello &amp; welcome</div>" style="min-height:150px;font-family:var(--font-mono);"></textarea>
+        <div class="controls-row">
+          <button class="btn btn-cta" id="encodeBtn">Encode →</button>
+          <button class="btn btn-outline" id="decodeBtn">Decode →</button>
+        </div>
+      </div>
+      <span class="sponsor-notice">⚡ Note: After clicking the button, your file will download automatically. You may be redirected to a sponsor page; please feel free to ignore it and return to VibezzTool.</span>
+
+      <div style="margin-top:16px;">
+        <label>Output</label>
+        <div class="output-box" id="outputBox" style="font-family:var(--font-mono); min-height:120px;"></div>
+        <div class="controls-row">
+          <button class="btn btn-copy" id="copyOutput">Copy Output</button>
+        </div>
       </div>
     </div>
-
-    <div class="panel">
-      <h2>Get in touch</h2>
-      <p>Questions, feedback, or a tool idea? Reach us at <a href="mailto:hardesilva@gmail.com" style="color:var(--marker);font-weight:600;">hardesilva@gmail.com</a>.</p>
-    </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">Need to check text length too? Try the Character Counter.</p>
+      <div class="tool-grid">
+      <a class="tool-card" href="bio-font-generator.html">
+        <span class="badge b-1">Aa</span>
+        <h3>Bio Font Generator</h3>
+        <p>Fancy fonts for your Instagram/TikTok bio</p>
+      </a>
+      <a class="tool-card" href="character-counter.html">
+        <span class="badge b-2">C·</span>
+        <h3>Character Counter</h3>
+        <p>Check caption & meta description limits</p>
+      </a>
+      <a class="tool-card" href="word-counter.html">
+        <span class="badge b-3">W·</span>
+        <h3>Word Counter</h3>
+        <p>Word count and reading time for blog posts</p>
+      </a>
+      <a class="tool-card" href="password-generator.html">
+        <span class="badge b-4">🔑</span>
+        <h3>Password Generator</h3>
+        <p>A strong password in one click</p>
+      </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
+      <a class="tool-card" href="color-palette-generator.html">
+        <span class="badge b-6">🌈</span>
+        <h3>Color Palette Generator</h3>
+        <p>Ready-made palettes for design & thumbnails</p>
+      </a>
+      </div>
+    </section>
 
   </main>
   <div class="wrap">
@@ -167,6 +213,65 @@
   </footer>
 
 <script src="app.js"></script>
+<script>
+const modeJson = document.getElementById('modeJson');
+const modeHtml = document.getElementById('modeHtml');
+const jsonMode = document.getElementById('jsonMode');
+const htmlMode = document.getElementById('htmlMode');
+const outputBox = document.getElementById('outputBox');
+const jsonStatus = document.getElementById('jsonStatus');
+
+modeJson.addEventListener('click', () => {
+  modeJson.className = 'btn btn-cta'; modeHtml.className = 'btn btn-outline';
+  jsonMode.style.display = 'block'; htmlMode.style.display = 'none';
+  outputBox.textContent = ''; jsonStatus.textContent = '';
+});
+modeHtml.addEventListener('click', () => {
+  modeHtml.className = 'btn btn-cta'; modeJson.className = 'btn btn-outline';
+  htmlMode.style.display = 'block'; jsonMode.style.display = 'none';
+  outputBox.textContent = '';
+});
+
+const jsonInput = document.getElementById('jsonInput');
+document.getElementById('formatBtn').addEventListener('click', () => {
+  try {
+    const parsed = JSON.parse(jsonInput.value);
+    outputBox.textContent = JSON.stringify(parsed, null, 2);
+    jsonStatus.innerHTML = '<span style="color:#3C9D5B;">✓ Valid JSON</span>';
+    triggerSponsoredTab();
+  } catch (e) {
+    jsonStatus.innerHTML = '<span style="color:var(--marker);">✕ ' + e.message + '</span>';
+    outputBox.textContent = '';
+  }
+});
+document.getElementById('minifyBtn').addEventListener('click', () => {
+  try {
+    const parsed = JSON.parse(jsonInput.value);
+    outputBox.textContent = JSON.stringify(parsed);
+    jsonStatus.innerHTML = '<span style="color:#3C9D5B;">✓ Valid JSON</span>';
+    triggerSponsoredTab();
+  } catch (e) {
+    jsonStatus.innerHTML = '<span style="color:var(--marker);">✕ ' + e.message + '</span>';
+    outputBox.textContent = '';
+  }
+});
+
+const htmlInput = document.getElementById('htmlInput');
+document.getElementById('encodeBtn').addEventListener('click', () => {
+  const div = document.createElement('div');
+  div.textContent = htmlInput.value;
+  outputBox.textContent = div.innerHTML;
+  triggerSponsoredTab();
+});
+document.getElementById('decodeBtn').addEventListener('click', () => {
+  const div = document.createElement('div');
+  div.innerHTML = htmlInput.value;
+  outputBox.textContent = div.textContent;
+  triggerSponsoredTab();
+});
+
+document.getElementById('copyOutput').addEventListener('click', () => copyText(outputBox.textContent, 'Output'));
+</script>
 
 </body>
 </html>

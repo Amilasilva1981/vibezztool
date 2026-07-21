@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us — VibezzTool</title>
-<meta name="description" content="Learn why VibezzTool builds free, no-sign-up utility tools for creators and bloggers, and how every tool keeps your data private by running entirely in your browser.">
-<link rel="canonical" href="https://vibezztool.com/about.html">
+<title>CSS Gradient Generator — Free, Live Preview, Copy-Paste Code</title>
+<meta name="description" content="Build a linear or radial CSS gradient with a live preview and ready-to-paste code. Free, no sign-up, instant in your browser.">
+<link rel="canonical" href="https://vibezztool.com/css-gradient-generator.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -53,7 +53,7 @@
       <a href="plagiarism-checker.html" class="">Plagiarism Checker</a>
       <a href="qr-code-generator.html" class="">QR Code Generator</a>
       <a href="json-formatter.html" class="">JSON Formatter</a>
-      <a href="css-gradient-generator.html" class="">CSS Gradient Generator</a>
+      <a href="css-gradient-generator.html" class="current">CSS Gradient Generator</a>
       <a href="gpa-calculator.html" class="">GPA Calculator</a>
       <a href="unit-converter.html" class="">Unit Converter</a>
       <a href="invoice-generator.html" class="">Invoice Generator</a>
@@ -83,35 +83,81 @@
 
   <main class="wrap">
     <section class="tool-hero">
-      <span class="stamp">about us</span>
-      <h1>Free tools for the people who make the internet interesting</h1>
-      <p class="lede">VibezzTool is a small toolkit built for content creators, bloggers, and small business owners who need quick, reliable utilities without the sign-up walls and pop-up ads that slow everything down.</p>
+      <span class="stamp">DESIGN TOOL · 18</span>
+      <h1>CSS Gradient Generator — Free, Live Preview</h1>
+      <p class="lede">Pick two colors and an angle to build a CSS gradient, with a live preview and ready-to-paste code. Free, no sign-up, works instantly in your browser.</p>
     </section>
 
     <div class="panel">
-      <h2>Why we built this</h2>
-      <p>Every day, creators open a dozen browser tabs just to convert an image, count characters, or find the right hashtags. Most of those tools ask for an email address, bury the actual function under three fake "Download" buttons, or interrupt you with pop-ups. We wanted something faster and more honest.</p>
-      <p>VibezzTool runs every tool directly in your browser using JavaScript. Nothing you type, upload, or generate is sent to a server — which also means it works instantly, with no waiting on uploads.</p>
-    </div>
-
-    <div class="panel">
-      <h2>How we keep this free</h2>
-      <p>VibezzTool is free because of advertising — we're not going to pretend otherwise. What we do control is which ads: no adult content, no gambling, no autoplay video, no fake buttons pretending to be your download. If a sponsored link ever opens in a new tab, your result is already sitting in the tab you started in — you never have to click through anything to get it.</p>
-    </div>
-
-    <div class="panel">
-      <h2>What we stand for</h2>
-      <div class="info-grid">
-        <div class="card"><h3>Privacy by default</h3><p>Your data never leaves your device. There's nothing to leak because nothing is stored.</p></div>
-        <div class="card"><h3>No dark patterns</h3><p>One clear action per page. No countdown timers, no fake buttons, no forced sign-ups.</p></div>
-        <div class="card"><h3>Always free</h3><p>Every tool on this site is free to use, with no usage limits or premium tiers.</p></div>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <div>
+          <label for="colorA">Color A</label>
+          <input type="color" id="colorA" value="#F4D35E" style="width:70px;height:50px;border:none;border-radius:10px;cursor:pointer;">
+        </div>
+        <div>
+          <label for="colorB">Color B</label>
+          <input type="color" id="colorB" value="#EF6461" style="width:70px;height:50px;border:none;border-radius:10px;cursor:pointer;">
+        </div>
+        <div style="flex:1;min-width:160px;">
+          <label for="angle">Angle: <span id="angleVal">90</span>°</label>
+          <input type="range" id="angle" min="0" max="360" value="90">
+        </div>
+        <div>
+          <label for="gradType">Type</label>
+          <select id="gradType">
+            <option value="linear">Linear</option>
+            <option value="radial">Radial</option>
+          </select>
+        </div>
       </div>
-    </div>
 
-    <div class="panel">
-      <h2>Get in touch</h2>
-      <p>Questions, feedback, or a tool idea? Reach us at <a href="mailto:hardesilva@gmail.com" style="color:var(--marker);font-weight:600;">hardesilva@gmail.com</a>.</p>
+      <div id="gradPreview" style="margin-top:20px; height:180px; border-radius:14px; box-shadow:var(--shadow);"></div>
+
+      <div style="margin-top:16px;">
+        <label>CSS Code</label>
+        <div class="output-box" id="cssOutput" style="font-family:var(--font-mono);"></div>
+        <div class="controls-row">
+          <button class="btn btn-cta" id="copyCss">Copy CSS</button>
+        </div>
+      </div>
+      <span class="sponsor-notice">⚡ Note: After clicking the button, your file will download automatically. You may be redirected to a sponsor page; please feel free to ignore it and return to VibezzTool.</span>
     </div>
+    <section class="cross-promo">
+      <h2>You might need these too</h2>
+      <p class="hint">Need a full color palette instead? Try the Color Palette Generator.</p>
+      <div class="tool-grid">
+      <a class="tool-card" href="bio-font-generator.html">
+        <span class="badge b-1">Aa</span>
+        <h3>Bio Font Generator</h3>
+        <p>Fancy fonts for your Instagram/TikTok bio</p>
+      </a>
+      <a class="tool-card" href="character-counter.html">
+        <span class="badge b-2">C·</span>
+        <h3>Character Counter</h3>
+        <p>Check caption & meta description limits</p>
+      </a>
+      <a class="tool-card" href="word-counter.html">
+        <span class="badge b-3">W·</span>
+        <h3>Word Counter</h3>
+        <p>Word count and reading time for blog posts</p>
+      </a>
+      <a class="tool-card" href="password-generator.html">
+        <span class="badge b-4">🔑</span>
+        <h3>Password Generator</h3>
+        <p>A strong password in one click</p>
+      </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
+      <a class="tool-card" href="color-palette-generator.html">
+        <span class="badge b-6">🌈</span>
+        <h3>Color Palette Generator</h3>
+        <p>Ready-made palettes for design & thumbnails</p>
+      </a>
+      </div>
+    </section>
 
   </main>
   <div class="wrap">
@@ -167,6 +213,38 @@
   </footer>
 
 <script src="app.js"></script>
+<script>
+const colorA = document.getElementById('colorA');
+const colorB = document.getElementById('colorB');
+const angle = document.getElementById('angle');
+const angleVal = document.getElementById('angleVal');
+const gradType = document.getElementById('gradType');
+const gradPreview = document.getElementById('gradPreview');
+const cssOutput = document.getElementById('cssOutput');
+
+function render() {
+  const a = colorA.value, b = colorB.value, deg = angle.value, type = gradType.value;
+  angleVal.textContent = deg;
+  let css;
+  if (type === 'linear') {
+    css = `background: linear-gradient(${deg}deg, ${a}, ${b});`;
+  } else {
+    css = `background: radial-gradient(circle, ${a}, ${b});`;
+  }
+  gradPreview.style.background = type === 'linear'
+    ? `linear-gradient(${deg}deg, ${a}, ${b})`
+    : `radial-gradient(circle, ${a}, ${b})`;
+  cssOutput.textContent = css;
+}
+
+[colorA, colorB, angle, gradType].forEach(el => el.addEventListener('input', render));
+render();
+
+document.getElementById('copyCss').addEventListener('click', () => {
+  copyText(cssOutput.textContent, 'CSS');
+  triggerSponsoredTab();
+});
+</script>
 
 </body>
 </html>

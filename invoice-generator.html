@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Color Picker — Free HEX, RGB, HSL Color Code Tool</title>
-<meta name="description" content="Get HEX, RGB, and HSL color codes instantly for design, thumbnail, or logo work. Pick a color straight from your screen — 100% free.">
-<link rel="canonical" href="https://vibezztool.com/color-picker.html">
+<title>Invoice Generator — Free, Downloadable PDF for Freelancers</title>
+<meta name="description" content="Create a clean, professional invoice with line items and download it as a PDF instantly. Free, no sign-up, built for freelancers and creators.">
+<link rel="canonical" href="https://vibezztool.com/invoice-generator.html">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -42,7 +42,7 @@
       <a href="character-counter.html" class="">Character Counter</a>
       <a href="word-counter.html" class="">Word Counter</a>
       <a href="password-generator.html" class="">Password Generator</a>
-      <a href="color-picker.html" class="current">Color Picker</a>
+      <a href="color-picker.html" class="">Color Picker</a>
       <a href="color-palette-generator.html" class="">Color Palette Generator</a>
       <a href="hashtag-helper.html" class="">Hashtag Helper</a>
       <a href="image-to-webp-converter.html" class="">Image to WebP Converter</a>
@@ -56,7 +56,7 @@
       <a href="css-gradient-generator.html" class="">CSS Gradient Generator</a>
       <a href="gpa-calculator.html" class="">GPA Calculator</a>
       <a href="unit-converter.html" class="">Unit Converter</a>
-      <a href="invoice-generator.html" class="">Invoice Generator</a>
+      <a href="invoice-generator.html" class="current">Invoice Generator</a>
       <a href="guides.html" class="">Blog</a>
       </nav>
     </div>
@@ -83,31 +83,54 @@
 
   <main class="wrap">
     <section class="tool-hero">
-      <span class="stamp">DESIGN TOOL · 05</span>
-      <h1>Color Picker — Get HEX / RGB / HSL Codes Instantly</h1>
-      <p class="lede">Pick a color code for a thumbnail, logo, or poster right here. Copy it in HEX, RGB, or HSL format — whichever you need.</p>
+      <span class="stamp">FREELANCER TOOL · 19</span>
+      <h1>Invoice Generator — Free, Downloadable PDF</h1>
+      <p class="lede">Fill in your details, add line items, and download a clean, professional invoice as a PDF — built for freelancers and creators. Free, no sign-up, nothing saved to a server.</p>
     </section>
 
     <div class="panel">
-      <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
-        <input type="color" id="cpInput" value="#EF6461" style="width:90px; height:90px; border:none; border-radius:14px; cursor:pointer; padding:0;">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
         <div>
-          <button class="btn btn-accent" id="cpEyedrop">🎯 Pick a Color From Your Screen</button>
-          <p style="font-size:0.78rem;color:var(--slate);margin-top:8px;">(Only works on Chrome/Edge browsers)</p>
+          <label for="fromName">From (your name/business)</label>
+          <input type="text" id="fromName" placeholder="Alex Rivera Design">
+        </div>
+        <div>
+          <label for="toName">Bill To</label>
+          <input type="text" id="toName" placeholder="Client Name">
+        </div>
+        <div>
+          <label for="invoiceNum">Invoice #</label>
+          <input type="text" id="invoiceNum" placeholder="INV-001">
+        </div>
+        <div>
+          <label for="invoiceDate">Date</label>
+          <input type="date" id="invoiceDate">
         </div>
       </div>
 
-      <span class="sponsor-notice">⚡ Note: After clicking the button, your file will download automatically. You may be redirected to a sponsor page; please feel free to ignore it and return to VibezzTool.</span>
-      <div id="cpResults" style="margin-top:20px;"></div>
-    </div>
+      <h2 style="margin-top:20px;">Line Items</h2>
+      <div id="itemRows"></div>
+      <div class="controls-row">
+        <button class="btn btn-outline" id="addItem">+ Add Item</button>
+      </div>
 
-    <div class="panel">
-      <h2>Recently Picked Colors</h2>
-      <div id="cpHistory" class="swatch-strip"></div>
+      <div style="margin-top:16px;">
+        <label for="notes">Notes (optional)</label>
+        <textarea id="notes" placeholder="Payment due within 14 days. Thank you!" style="min-height:70px;"></textarea>
+      </div>
+
+      <div class="readout-grid" style="margin-top:16px;">
+        <div class="readout"><span class="num" id="invoiceTotal">$0.00</span><span class="lbl">Total</span></div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn btn-cta" id="downloadInvoice">⬇️ Download PDF Invoice</button>
+      </div>
+      <span class="sponsor-notice">⚡ Note: After clicking the button, your file will download automatically. You may be redirected to a sponsor page; please feel free to ignore it and return to VibezzTool.</span>
     </div>
     <section class="cross-promo">
       <h2>You might need these too</h2>
-      <p class="hint">Need a full matching palette? Try the Color Palette Generator.</p>
+      <p class="hint">Need to convert this invoice to Word too? Try the PDF ⇄ Word Converter.</p>
       <div class="tool-grid">
       <a class="tool-card" href="bio-font-generator.html">
         <span class="badge b-1">Aa</span>
@@ -129,15 +152,15 @@
         <h3>Password Generator</h3>
         <p>A strong password in one click</p>
       </a>
+      <a class="tool-card" href="color-picker.html">
+        <span class="badge b-5">🎨</span>
+        <h3>Color Picker</h3>
+        <p>Grab HEX / RGB / HSL codes instantly</p>
+      </a>
       <a class="tool-card" href="color-palette-generator.html">
         <span class="badge b-6">🌈</span>
         <h3>Color Palette Generator</h3>
         <p>Ready-made palettes for design & thumbnails</p>
-      </a>
-      <a class="tool-card" href="hashtag-helper.html">
-        <span class="badge b-7">#</span>
-        <h3>Hashtag Helper</h3>
-        <p>Curated hashtag sets by niche</p>
       </a>
       </div>
     </section>
@@ -196,87 +219,107 @@
   </footer>
 
 <script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-const input = document.getElementById('cpInput');
-const results = document.getElementById('cpResults');
-const historyEl = document.getElementById('cpHistory');
-let history = [];
+const itemRows = document.getElementById('itemRows');
 
-function hexToRgb(hex) {
-  const bigint = parseInt(hex.slice(1), 16);
-  return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
+function addItem() {
+  const row = document.createElement('div');
+  row.className = 'result-row';
+  row.style.gap = '10px';
+  row.innerHTML = `
+    <input type="text" placeholder="Description" style="flex:2;" class="item-desc">
+    <input type="number" placeholder="Qty" min="0" value="1" style="flex:1;max-width:70px;" class="item-qty">
+    <input type="number" placeholder="Price" min="0" step="0.01" value="0" style="flex:1;max-width:100px;" class="item-price">
+    <button class="btn btn-copy remove-item">✕</button>
+  `;
+  row.querySelector('.remove-item').addEventListener('click', () => { row.remove(); calcTotal(); });
+  row.querySelectorAll('input').forEach(el => el.addEventListener('input', calcTotal));
+  itemRows.appendChild(row);
+  calcTotal();
 }
-function rgbToHsl(r, g, b) {
-  r/=255; g/=255; b/=255;
-  const max = Math.max(r,g,b), min = Math.min(r,g,b);
-  let h, s, l = (max+min)/2;
-  if (max === min) { h = s = 0; }
-  else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
-    }
-    h /= 6;
+
+function calcTotal() {
+  let total = 0;
+  itemRows.querySelectorAll('.result-row').forEach(row => {
+    const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+    const price = parseFloat(row.querySelector('.item-price').value) || 0;
+    total += qty * price;
+  });
+  document.getElementById('invoiceTotal').textContent = '$' + total.toFixed(2);
+  return total;
+}
+
+document.getElementById('addItem').addEventListener('click', addItem);
+addItem(); addItem();
+document.getElementById('invoiceDate').valueAsDate = new Date();
+
+document.getElementById('downloadInvoice').addEventListener('click', () => {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+  const marginX = 48;
+  let y = 60;
+
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(22);
+  doc.text('INVOICE', marginX, y);
+  y += 30;
+
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(11);
+  const fromName = document.getElementById('fromName').value || '—';
+  const toName = document.getElementById('toName').value || '—';
+  const invoiceNum = document.getElementById('invoiceNum').value || '—';
+  const invoiceDate = document.getElementById('invoiceDate').value || '—';
+
+  doc.text('From: ' + fromName, marginX, y); y += 16;
+  doc.text('Bill To: ' + toName, marginX, y); y += 16;
+  doc.text('Invoice #: ' + invoiceNum, marginX, y); y += 16;
+  doc.text('Date: ' + invoiceDate, marginX, y); y += 30;
+
+  doc.setFont('helvetica', 'bold');
+  doc.text('Description', marginX, y);
+  doc.text('Qty', 340, y);
+  doc.text('Price', 400, y);
+  doc.text('Subtotal', 470, y);
+  y += 6;
+  doc.setLineWidth(1);
+  doc.line(marginX, y, 545, y);
+  y += 16;
+
+  doc.setFont('helvetica', 'normal');
+  itemRows.querySelectorAll('.result-row').forEach(row => {
+    const desc = row.querySelector('.item-desc').value || '—';
+    const qty = parseFloat(row.querySelector('.item-qty').value) || 0;
+    const price = parseFloat(row.querySelector('.item-price').value) || 0;
+    const sub = qty * price;
+    const lines = doc.splitTextToSize(desc, 280);
+    doc.text(lines, marginX, y);
+    doc.text(String(qty), 340, y);
+    doc.text('$' + price.toFixed(2), 400, y);
+    doc.text('$' + sub.toFixed(2), 470, y);
+    y += Math.max(16, lines.length * 14);
+  });
+
+  y += 10;
+  doc.setLineWidth(1);
+  doc.line(marginX, y, 545, y);
+  y += 20;
+
+  const total = calcTotal();
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(13);
+  doc.text('Total: $' + total.toFixed(2), 400, y);
+  y += 30;
+
+  const notes = document.getElementById('notes').value;
+  if (notes) {
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(10);
+    const noteLines = doc.splitTextToSize('Notes: ' + notes, 500);
+    doc.text(noteLines, marginX, y);
   }
-  return [Math.round(h*360), Math.round(s*100), Math.round(l*100)];
-}
 
-function render() {
-  const hex = input.value;
-  const [r,g,b] = hexToRgb(hex);
-  const [h,s,l] = rgbToHsl(r,g,b);
-  const formats = [
-    ['HEX', hex.toUpperCase()],
-    ['RGB', `rgb(${r}, ${g}, ${b})`],
-    ['HSL', `hsl(${h}, ${s}%, ${l}%)`]
-  ];
-  results.innerHTML = '';
-  formats.forEach(([label, val]) => {
-    const row = document.createElement('div');
-    row.className = 'result-row';
-    row.innerHTML = `<div><span class="tag">${label}</span><span class="val">${val}</span></div>`;
-    const btn = document.createElement('button');
-    btn.className = 'btn btn-copy';
-    btn.textContent = 'Copy';
-    btn.onclick = () => { copyText(val, label); triggerSponsoredTab(); };
-    row.appendChild(btn);
-    results.appendChild(row);
-  });
-}
-
-function pushHistory(hex) {
-  history = [hex, ...history.filter(h => h !== hex)].slice(0, 8);
-  historyEl.innerHTML = '';
-  history.forEach(hx => {
-    const sw = document.createElement('div');
-    sw.className = 'swatch';
-    sw.style.background = hx;
-    const lbl = document.createElement('div');
-    lbl.className = 'hex-label';
-    lbl.textContent = hx.toUpperCase();
-    lbl.onclick = () => { copyText(hx.toUpperCase(), 'HEX'); triggerSponsoredTab(); };
-    sw.appendChild(lbl);
-    historyEl.appendChild(sw);
-  });
-}
-
-input.addEventListener('input', () => { render(); pushHistory(input.value); });
-document.getElementById('cpEyedrop').addEventListener('click', async () => {
-  if (!window.EyeDropper) { showToast("Your browser does not support this feature"); return; }
-  try {
-    const ed = new EyeDropper();
-    const result = await ed.open();
-    input.value = result.sRGBHex;
-    render();
-    pushHistory(result.sRGBHex);
-  } catch (e) {}
+  doc.save((invoiceNum !== '—' ? invoiceNum : 'invoice') + '.pdf');
+  triggerSponsoredTab();
+  showToast('Downloaded ✓');
 });
-
-render();
-pushHistory(input.value);
 </script>
 
 </body>
